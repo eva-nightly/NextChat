@@ -66,6 +66,7 @@ export function useMessageSelector() {
   };
 }
 
+// @uxid app/components/message-selector::MessageSelector
 export function MessageSelector(props: {
   selection: Set<string>;
   updateSelection: Updater<Set<string>>;

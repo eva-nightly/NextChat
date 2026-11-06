@@ -134,6 +134,7 @@ const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
 });
 
+// @uxid app/components/chat::MCPAction
 const MCPAction = () => {
   const navigate = useNavigate();
   const accessCode = useAccessStore((state) => state.accessCode);
@@ -163,6 +164,7 @@ const MCPAction = () => {
   );
 };
 
+// @uxid app/components/chat::SessionConfigModel
 export function SessionConfigModel(props: { onClose: () => void }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -231,6 +233,7 @@ export function SessionConfigModel(props: { onClose: () => void }) {
   );
 }
 
+// @uxid app/components/chat::PromptToast
 function PromptToast(props: {
   showToast?: boolean;
   showModal?: boolean;
@@ -310,6 +313,7 @@ function useSubmitHandler() {
 
 export type RenderPrompt = Pick<Prompt, "title" | "content">;
 
+// @uxid app/components/chat::PromptHints
 export function PromptHints(props: {
   prompts: RenderPrompt[];
   onPromptSelect: (prompt: RenderPrompt) => void;
@@ -380,6 +384,7 @@ export function PromptHints(props: {
   );
 }
 
+// @uxid app/components/chat::ClearContextDivider
 function ClearContextDivider() {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -402,6 +407,7 @@ function ClearContextDivider() {
   );
 }
 
+// @uxid app/components/chat::ChatAction
 export function ChatAction(props: {
   text: string;
   icon: JSX.Element;
@@ -492,6 +498,7 @@ function useScrollToBottom(
   };
 }
 
+// @uxid app/components/chat::ChatActions
 export function ChatActions(props: {
   uploadImage: () => void;
   setAttachImages: (images: string[]) => void;
@@ -848,6 +855,7 @@ export function ChatActions(props: {
   );
 }
 
+// @uxid app/components/chat::EditMessageModal
 export function EditMessageModal(props: { onClose: () => void }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -912,6 +920,7 @@ export function EditMessageModal(props: { onClose: () => void }) {
   );
 }
 
+// @uxid app/components/chat::DeleteImageButton
 export function DeleteImageButton(props: { deleteImage: () => void }) {
   return (
     <div className={styles["delete-image"]} onClick={props.deleteImage}>
@@ -920,6 +929,7 @@ export function DeleteImageButton(props: { deleteImage: () => void }) {
   );
 }
 
+// @uxid app/components/chat::ShortcutKeyModal
 export function ShortcutKeyModal(props: { onClose: () => void }) {
   const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
   const shortcuts = [
@@ -2165,6 +2175,7 @@ function _Chat() {
   );
 }
 
+// @uxid app/components/chat::Chat
 export function Chat() {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();

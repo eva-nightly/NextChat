@@ -25,6 +25,7 @@ import { IconButton } from "./button";
 import { useAppConfig } from "../store/config";
 import clsx from "clsx";
 
+// @uxid app/components/markdown::Mermaid
 export function Mermaid(props: { code: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasError, setHasError] = useState(false);
@@ -71,6 +72,7 @@ export function Mermaid(props: { code: string }) {
   );
 }
 
+// @uxid app/components/markdown::PreCode
 export function PreCode(props: { children: any }) {
   const ref = useRef<HTMLPreElement>(null);
   const previewRef = useRef<HTMLPreviewHandler>(null);
@@ -173,6 +175,7 @@ export function PreCode(props: { children: any }) {
   );
 }
 
+// @uxid app/components/markdown::CustomCode
 function CustomCode(props: { children: any; className?: string }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -318,6 +321,7 @@ function _MarkDownContent(props: { content: string }) {
 
 export const MarkdownContent = React.memo(_MarkDownContent);
 
+// @uxid app/components/markdown::Markdown
 export function Markdown(
   props: {
     content: string;
