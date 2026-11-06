@@ -129,6 +129,7 @@ export const models = [
   },
 ];
 
+// @uxid app/components/sd/sd-panel::ControlParamItem
 export function ControlParamItem(props: {
   title: string;
   subTitle?: string;
@@ -156,6 +157,7 @@ export function ControlParamItem(props: {
   );
 }
 
+// @uxid app/components/sd/sd-panel::ControlParam
 export function ControlParam(props: {
   columns: any[];
   data: any;
@@ -276,6 +278,7 @@ export const getParams = (model: any, params: any) => {
   return models.find((m) => m.value === model.value)?.params(params) || [];
 };
 
+// @uxid app/components/sd/sd-panel::SdPanel
 export function SdPanel() {
   const sdStore = useSdStore();
   const currentModel = sdStore.currentModel;

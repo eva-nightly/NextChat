@@ -28,6 +28,7 @@ interface RealtimeChatProps {
   onPausedVoice?: () => void;
 }
 
+// @uxid app/components/realtime-chat/realtime-chat::RealtimeChat
 export function RealtimeChat({
   onClose,
   onStartVoice,

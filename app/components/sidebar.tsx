@@ -136,6 +136,7 @@ export function useDragSideBar() {
   };
 }
 
+// @uxid app/components/sidebar::SideBarContainer
 export function SideBarContainer(props: {
   children: React.ReactNode;
   onDragStart: (e: MouseEvent) => void;
@@ -169,6 +170,7 @@ export function SideBarContainer(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBarHeader
 export function SideBarHeader(props: {
   title?: string | React.ReactNode;
   subTitle?: string | React.ReactNode;
@@ -198,6 +200,7 @@ export function SideBarHeader(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBarBody
 export function SideBarBody(props: {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -210,6 +213,7 @@ export function SideBarBody(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBarTail
 export function SideBarTail(props: {
   primaryAction?: React.ReactNode;
   secondaryAction?: React.ReactNode;
@@ -224,6 +228,7 @@ export function SideBarTail(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBar
 export function SideBar(props: { className?: string }) {
   useHotKey();
   const { onDragStart, shouldNarrow } = useDragSideBar();

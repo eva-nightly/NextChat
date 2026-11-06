@@ -87,6 +87,7 @@ function getSdTaskStatus(item: any) {
   );
 }
 
+// @uxid app/components/sd/sd::Sd
 export function Sd() {
   const isMobileScreen = useMobileScreen();
   const navigate = useNavigate();

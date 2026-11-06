@@ -27,6 +27,7 @@ export const viewport: Viewport = {
   ],
 };
 
+// @uxid app/layout::RootLayout
 export default function RootLayout({
   children,
 }: {

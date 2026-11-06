@@ -15,6 +15,7 @@ type Item = {
   name: string;
   content: string;
 };
+// @uxid app/components/search-chat::SearchChatPage
 export function SearchChatPage() {
   const navigate = useNavigate();
 

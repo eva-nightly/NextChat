@@ -26,6 +26,7 @@ import { IconButton } from "./button";
 import { Avatar } from "./emoji";
 import clsx from "clsx";
 
+// @uxid app/components/ui-lib::Popover
 export function Popover(props: {
   children: JSX.Element;
   content: JSX.Element;
@@ -45,12 +46,14 @@ export function Popover(props: {
   );
 }
 
+// @uxid app/components/ui-lib::Card
 export function Card(props: { children: JSX.Element[]; className?: string }) {
   return (
     <div className={clsx(styles.card, props.className)}>{props.children}</div>
   );
 }
 
+// @uxid app/components/ui-lib::ListItem
 export function ListItem(props: {
   title?: string;
   subTitle?: string | JSX.Element;
@@ -87,6 +90,7 @@ export function ListItem(props: {
   );
 }
 
+// @uxid app/components/ui-lib::List
 export function List(props: { children: React.ReactNode; id?: string }) {
   return (
     <div className={styles.list} id={props.id}>
@@ -95,6 +99,7 @@ export function List(props: { children: React.ReactNode; id?: string }) {
   );
 }
 
+// @uxid app/components/ui-lib::Loading
 export function Loading() {
   return (
     <div
@@ -119,6 +124,7 @@ interface ModalProps {
   footer?: React.ReactNode;
   onClose?: () => void;
 }
+// @uxid app/components/ui-lib::Modal
 export function Modal(props: ModalProps) {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -208,6 +214,7 @@ export type ToastProps = {
   onClose?: () => void;
 };
 
+// @uxid app/components/ui-lib::Toast
 export function Toast(props: ToastProps) {
   return (
     <div className={styles["toast-container"]}>
@@ -260,6 +267,7 @@ export type InputProps = React.HTMLProps<HTMLTextAreaElement> & {
   rows?: number;
 };
 
+// @uxid app/components/ui-lib::Input
 export function Input(props: InputProps) {
   return (
     <textarea
@@ -269,6 +277,7 @@ export function Input(props: InputProps) {
   );
 }
 
+// @uxid app/components/ui-lib::PasswordInput
 export function PasswordInput(
   props: HTMLProps<HTMLInputElement> & { aria?: string },
 ) {
@@ -294,6 +303,7 @@ export function PasswordInput(
   );
 }
 
+// @uxid app/components/ui-lib::Select
 export function Select(
   props: React.DetailedHTMLProps<
     React.SelectHTMLAttributes<HTMLSelectElement> & {
@@ -372,6 +382,7 @@ export function showConfirm(content: any) {
   });
 }
 
+// @uxid app/components/ui-lib::PromptInput
 function PromptInput(props: {
   value: string;
   onChange: (value: string) => void;
@@ -474,6 +485,7 @@ export function showImageModal(
   });
 }
 
+// @uxid app/components/ui-lib::Selector
 export function Selector<T>(props: {
   items: Array<{
     title: string;
@@ -552,6 +564,7 @@ export function Selector<T>(props: {
     </div>
   );
 }
+// @uxid app/components/ui-lib::FullScreen
 export function FullScreen(props: any) {
   const { children, right = 10, top = 10, ...rest } = props;
   const ref = useRef<HTMLDivElement>();

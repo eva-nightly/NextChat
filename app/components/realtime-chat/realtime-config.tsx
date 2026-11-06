@@ -13,6 +13,7 @@ const models = ["gpt-4o-realtime-preview-2024-10-01"];
 
 const voice = ["alloy", "shimmer", "echo"];
 
+// @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList
 export function RealtimeConfigList(props: {
   realtimeConfig: RealtimeConfig;
   updateConfig: (updater: (config: RealtimeConfig) => void) => void;
