@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 export type ButtonType = "primary" | "danger" | null;
 
+// @uxid app/components/button::IconButton
 export function IconButton(props: {
   onClick?: () => void;
   icon?: JSX.Element;

@@ -16,6 +16,7 @@ interface IErrorBoundaryState {
   info: React.ErrorInfo | null;
 }
 
+// @uxid app/components/error::ErrorBoundary
 export class ErrorBoundary extends React.Component<any, IErrorBoundaryState> {
   constructor(props: any) {
     super(props);

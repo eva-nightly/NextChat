@@ -65,6 +65,7 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
   return result;
 }
 
+// @uxid app/components/mask::MaskAvatar
 export function MaskAvatar(props: { avatar: string; model?: ModelType }) {
   return props.avatar !== DEFAULT_MASK_AVATAR ? (
     <Avatar avatar={props.avatar} />
@@ -73,6 +74,7 @@ export function MaskAvatar(props: { avatar: string; model?: ModelType }) {
   );
 }
 
+// @uxid app/components/mask::MaskConfig
 export function MaskConfig(props: {
   mask: Mask;
   updateMask: Updater<Mask>;
@@ -257,6 +259,7 @@ export function MaskConfig(props: {
   );
 }
 
+// @uxid app/components/mask::ContextPromptItem
 function ContextPromptItem(props: {
   index: number;
   prompt: ChatMessage;
@@ -321,6 +324,7 @@ function ContextPromptItem(props: {
   );
 }
 
+// @uxid app/components/mask::ContextPrompts
 export function ContextPrompts(props: {
   context: ChatMessage[];
   updateContext: (updater: (context: ChatMessage[]) => void) => void;
@@ -439,6 +443,7 @@ export function ContextPrompts(props: {
   );
 }
 
+// @uxid app/components/mask::MaskPage
 export function MaskPage() {
   const navigate = useNavigate();
 
