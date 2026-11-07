@@ -30,6 +30,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import clsx from "clsx";
 
+// @uxid app/components/plugin::PluginPage
 export function PluginPage() {
   const navigate = useNavigate();
   const pluginStore = usePluginStore();

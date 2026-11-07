@@ -30,6 +30,7 @@ const SdPanel = dynamic(
   },
 );
 
+// @uxid app/components/sd/sd-sidebar::SideBar
 export function SideBar(props: { className?: string }) {
   useHotKey();
   const isMobileScreen = useMobileScreen();

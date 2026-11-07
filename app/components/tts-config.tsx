@@ -10,6 +10,7 @@ import {
 } from "../constant";
 import { InputRange } from "./input-range";
 
+// @uxid app/components/tts-config::TTSConfigList
 export function TTSConfigList(props: {
   ttsConfig: TTSConfig;
   updateConfig: (updater: (config: TTSConfig) => void) => void;
