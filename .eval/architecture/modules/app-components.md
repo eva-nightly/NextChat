@@ -1,0 +1,156 @@
+# Module: app/components [AI]
+
+(part 1 of 3) Provides the primary user interface components for NextChat, including the chat view, authentication page, chat session list, mask/persona configurations, artifacts rendering/sharing, message exporter, avatar picker, and error boundaries. (part 2 of 3) Provides UI views and reusable components for NextChat, including chat session management, model parameter configuration, mask/persona selection, MCP server market, OpenAPI plugin management, message history search/selection, and base design system elements. (part 3 of 3) Provides interactive UI components for real-time multimodal audio/text streaming chat (via OpenAI and Azure Realtime APIs) with animated voiceprint visualization, as well as a dedicated interface for configuring, submitting, and inspecting Stable Diffusion image generation tasks.
+
+_This module does not fit in one model call, so it was read in 3 parts and their summaries were combined without a further model call._
+
+## Key files
+- `app/components/home.tsx`: Root container component orchestrating layout, routing, client hydration, theme switching, language setup, and MCP initialization
+- `app/components/chat.tsx`: Core conversation interface managing chat message flow, session settings, real-time audio/TTS, and LLM controls
+- `app/components/auth.tsx`: Authentication and API key setup page allowing users to configure access codes, OpenAI keys, or Google keys
+- `app/components/chat-list.tsx`: Sidebar chat history manager with drag-and-drop session reordering and session deletion
+- `app/components/mask.tsx`: Mask/persona customization components including prompt contexts, avatar selection, and model configuration
+- `app/components/artifacts.tsx`: Isolated sandboxed HTML iframe preview and code sharing component for generated code artifacts
+- `app/components/markdown.tsx`: Markdown parser rendering assistant responses with support for LaTeX (KaTeX), code block folding, Mermaid diagrams, and artifacts
+- `app/components/exporter.tsx`: Multi-step modal dialog for exporting chat sessions to image, text/markdown, or JSON formats
+- `app/components/button.tsx`: Reusable icon and text button component used across the application UI
+- `app/components/emoji.tsx`: Avatar component displaying model logos or emoji avatars using emoji-picker-react and CDN assets
+- `app/components/error.tsx`: React ErrorBoundary component providing error display, GitHub reporting links, and state wipe recovery
+- `app/components/input-range.tsx`: Accessible styled range input slider control
+- `app/components/sidebar.tsx`: Collapsible sidebar component managing chat history list, discovery shortcuts, and global navigation.
+- `app/components/new-chat.tsx`: New chat initialization screen displaying mask/persona selection cards and fast start options.
+- `app/components/model-config.tsx`: Form controls for AI model parameters including temperature, top_p, max tokens, penalties, and system prompt injection.
+- `app/components/tts-config.tsx`: Configuration interface for Text-to-Speech engines, models, voices, and playback speed.
+- `app/components/settings.tsx`: Settings view managing prompts, provider configurations, theme, data sync, and application resets.
+- `app/components/mcp-market.tsx`: Model Context Protocol (MCP) server marketplace and management page for discovering, configuring, and inspecting tool status.
+- `app/components/plugin.tsx`: OpenAPI-based function calling plugin manager for creating, editing, and inspecting tools.
+- `app/components/search-chat.tsx`: Full-text search interface across stored chat sessions and message contents.
+- `app/components/message-selector.tsx`: Batch message selection component supporting search and shift-click range selection for context operations.
+- `app/components/ui-lib.tsx`: Core reusable UI primitives such as Modal, Popover, Toast, Select, PasswordInput, List, and ListItem.
+- `app/components/realtime-chat/realtime-chat.tsx`: Manages client-side WebSocket/realtime connections using rt-client for bidirectional voice and text streaming, transcription with Whisper, and audio playback.
+- `app/components/realtime-chat/realtime-config.tsx`: Settings configuration interface for realtime providers (OpenAI, Azure), models, voices, temperature, and API keys.
+- `app/components/sd/sd.tsx`: Main view for displaying Stable Diffusion generated images, task status history (wait, running, success, error), and image previews.
+- `app/components/sd/sd-panel.tsx`: Defines parameter schemas and form controls for Stable Diffusion prompts, aspect ratios, image styles, model versions, and seeds.
+- `app/components/sd/sd-sidebar.tsx`: Sidebar container that renders parameter controls and handles generation task dispatching via sdStore.
+- `app/components/voice-print/voice-print.tsx`: Canvas-based animated visualizer that renders dynamic frequency waveforms for active voice conversations.
+
+## Public interface
+- Home()
+- Loading(props: { noLogo?: boolean })
+- WindowContent(props: { children: React.ReactNode })
+- useSwitchTheme()
+- useLoadData()
+- AuthPage()
+- ChatItem(props: { onClick?: () => void; onDelete?: () => void; title: string; count: number; time: string; selected: boolean; id: string; index: number; narrow?: boolean; mask: Mask })
+- ChatList(props: { narrow?: boolean })
+- SessionConfigModel(props: { onClose: () => void })
+- HTMLPreview
+- ArtifactsShareButton(props: { getCode: () => string; id?: string; style?: any; fileName?: string })
+- Artifacts()
+- IconButton(props: { onClick?: () => void; icon?: JSX.Element; type?: ButtonType; text?: string; bordered?: boolean; shadow?: boolean; className?: string; title?: string; disabled?: boolean; tabIndex?: number; autoFocus?: boolean; style?: CSSProperties; aria?: string })
+- Avatar(props: { model?: ModelType; avatar?: string })
+- AvatarPicker(props: { onEmojiClick: (emojiId: string) => void })
+- EmojiAvatar(props: { avatar: string; size?: number })
+- ErrorBoundary
+- ExportMessageModal(props: { onClose: () => void })
+- MessageExporter()
+- RenderExport(props: { messages: ChatMessage[]; onRender: (messages: ChatMessage[]) => void })
+- InputRange(props: InputRangeProps)
+- Mermaid(props: { code: string })
+- PreCode(props: { children: any })
+- MaskAvatar(props: { avatar: string; model?: ModelType })
+- MaskConfig(props: { mask: Mask; updateMask: Updater<Mask>; extraListItems?: JSX.Element; readonly?: boolean; shouldSyncFromGlobal?: boolean })
+- McpMarketPage
+- useMessageSelector
+- MessageSelector
+- ModelConfigList
+- NewChat
+- PluginPage
+- SearchChatPage
+- useHotKey
+- useDragSideBar
+- SideBarContainer
+- SideBarHeader
+- SideBarBody
+- SideBarTail
+- SideBar
+- TTSConfigList
+- Popover
+- Card
+- ListItem
+- List
+- Loading
+- Modal
+- showModal
+- Toast
+- showToast
+- Input
+- PasswordInput
+- Select
+- showConfirm
+- RealtimeChat({ onClose, onStartVoice, onPausedVoice }: RealtimeChatProps)
+- RealtimeConfigList({ realtimeConfig, updateConfig }: { realtimeConfig: RealtimeConfig; updateConfig: (updater: (config: RealtimeConfig) => void) => void })
+- Sd()
+- SideBar({ className }: { className?: string })
+- ControlParamItem(props: { title: string; subTitle?: string; required?: boolean; children?: JSX.Element | JSX.Element[]; className?: string })
+- ControlParam(props: { columns: any[]; data: any; onChange: (field: string, val: any) => void })
+- getModelParamBasicData(columns: any[], data: any, clearText?: boolean)
+- VoicePrint({ frequencies, isActive }: VoicePrintProps)
+
+## Dependencies
+- react
+- react-router-dom
+- react-markdown
+- @hello-pangea/dnd
+- emoji-picker-react
+- mermaid
+- clsx
+- nanoid
+- html-to-image
+- use-debounce
+- katex
+- remark-math
+- remark-breaks
+- rehype-katex
+- remark-gfm
+- rehype-highlight
+- lodash-es
+- next/dynamic
+- next/image
+- react-dom/client
+- next/link
+- openapi-client-axios
+- js-yaml
+- rt-client
+- @/app/store
+- @/app/store/sd
+- @/app/lib/audio
+- @/app/utils/chat
+- @/app/utils
+- @/app/locales
+- @/app/constant
+- @/app/components/button
+- @/app/components/ui-lib
+- @/app/components/input-range
+- @/app/components/sidebar
+- @/app/components/home
+
+## AI touchpoints [AI]
+- `app/components/auth.tsx`
+- `app/components/chat.tsx`
+- `app/components/mask.tsx`
+- `app/components/model-config.tsx`
+- `app/components/realtime-chat/realtime-config.tsx`
+- `app/components/sd/sd-panel.tsx`
+- `app/components/sd/sd.tsx`
+- `app/components/settings.tsx`
+- `app/components/home.tsx`
+- `app/components/emoji.tsx`
+- `app/components/mcp-market.tsx`
+- `app/components/plugin.tsx`
+- `app/components/new-chat.tsx`
+- `app/components/realtime-chat/realtime-chat.tsx`
+- `app/components/sd/sd-sidebar.tsx`
+
+## Open questions
+- RealtimeChat contains commented-out logic for syncing previous session chat messages/memory into the RTClient session before generation.
