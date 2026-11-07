@@ -4,6 +4,7 @@ import { getServerSideConfig } from "./config/server";
 
 const serverConfig = getServerSideConfig();
 
+// @uxid app/page::App
 export default async function App() {
   return (
     <>

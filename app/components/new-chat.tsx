@@ -18,6 +18,7 @@ import { showConfirm } from "./ui-lib";
 import { BUILTIN_MASK_STORE } from "../masks";
 import clsx from "clsx";
 
+// @uxid app/components/new-chat::MaskItem
 function MaskItem(props: { mask: Mask; onClick?: () => void }) {
   return (
     <div className={styles["mask"]} onClick={props.onClick}>
@@ -74,6 +75,7 @@ function useMaskGroup(masks: Mask[]) {
   return groups;
 }
 
+// @uxid app/components/new-chat::NewChat
 export function NewChat() {
   const chatStore = useChatStore();
   const maskStore = useMaskStore();

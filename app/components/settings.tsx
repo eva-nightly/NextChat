@@ -90,6 +90,7 @@ import { ProviderType } from "../utils/cloud";
 import { TTSConfigList } from "./tts-config";
 import { RealtimeConfigList } from "./realtime-chat/realtime-config";
 
+// @uxid app/components/settings::EditPromptModal
 function EditPromptModal(props: { id: string; onClose: () => void }) {
   const promptStore = usePromptStore();
   const prompt = promptStore.get(props.id);
@@ -139,6 +140,7 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
   ) : null;
 }
 
+// @uxid app/components/settings::UserPromptModal
 function UserPromptModal(props: { onClose?: () => void }) {
   const promptStore = usePromptStore();
   const userPrompts = promptStore.getUserPrompts();
@@ -244,6 +246,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
   );
 }
 
+// @uxid app/components/settings::DangerItems
 function DangerItems() {
   const chatStore = useChatStore();
   const appConfig = useAppConfig();
@@ -284,6 +287,7 @@ function DangerItems() {
   );
 }
 
+// @uxid app/components/settings::CheckButton
 function CheckButton() {
   const syncStore = useSyncStore();
 
@@ -325,6 +329,7 @@ function CheckButton() {
   );
 }
 
+// @uxid app/components/settings::SyncConfigModal
 function SyncConfigModal(props: { onClose?: () => void }) {
   const syncStore = useSyncStore();
 
@@ -486,6 +491,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
   );
 }
 
+// @uxid app/components/settings::SyncItems
 function SyncItems() {
   const syncStore = useSyncStore();
   const chatStore = useChatStore();
@@ -581,6 +587,7 @@ function SyncItems() {
   );
 }
 
+// @uxid app/components/settings::Settings
 export function Settings() {
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
