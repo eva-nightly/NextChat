@@ -33,6 +33,7 @@ export type HTMLPreviewHandler = {
   reload: () => void;
 };
 
+// @uxid app/components/artifacts::HTMLPreview
 export const HTMLPreview = forwardRef<HTMLPreviewHandler, HTMLPreviewProps>(
   function HTMLPreview(props, ref) {
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -106,6 +107,7 @@ export const HTMLPreview = forwardRef<HTMLPreviewHandler, HTMLPreviewProps>(
   },
 );
 
+// @uxid app/components/artifacts::ArtifactsShareButton
 export function ArtifactsShareButton({
   getCode,
   id,
@@ -202,6 +204,7 @@ export function ArtifactsShareButton({
   );
 }
 
+// @uxid app/components/artifacts::Artifacts
 export function Artifacts() {
   const { id } = useParams();
   const [code, setCode] = useState("");

@@ -22,6 +22,7 @@ import clsx from "clsx";
 
 const storage = safeLocalStorage();
 
+// @uxid app/components/auth::AuthPage
 export function AuthPage() {
   const navigate = useNavigate();
   const accessStore = useAccessStore();
@@ -126,6 +127,7 @@ export function AuthPage() {
   );
 }
 
+// @uxid app/components/auth::TopBanner
 function TopBanner() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);

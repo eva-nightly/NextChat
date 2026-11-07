@@ -20,6 +20,7 @@ import { showConfirm } from "./ui-lib";
 import { useMobileScreen } from "../utils";
 import clsx from "clsx";
 
+// @uxid app/components/chat-list::ChatItem
 export function ChatItem(props: {
   onClick?: () => void;
   onDelete?: () => void;
@@ -102,6 +103,7 @@ export function ChatItem(props: {
   );
 }
 
+// @uxid app/components/chat-list::ChatList
 export function ChatList(props: { narrow?: boolean }) {
   const [sessions, selectedIndex, selectSession, moveSession] = useChatStore(
     (state) => [

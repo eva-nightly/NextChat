@@ -13,6 +13,7 @@ interface InputRangeProps {
   aria: string;
 }
 
+// @uxid app/components/input-range::InputRange
 export function InputRange({
   onChange,
   title,

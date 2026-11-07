@@ -41,6 +41,7 @@ interface ConfigProperty {
   minItems?: number;
 }
 
+// @uxid app/components/mcp-market::McpMarketPage
 export function McpMarketPage() {
   const navigate = useNavigate();
   const accessCode = useAccessStore((state) => state.accessCode);

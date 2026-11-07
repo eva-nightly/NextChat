@@ -45,6 +45,7 @@ const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
 });
 
+// @uxid app/components/exporter::ExportMessageModal
 export function ExportMessageModal(props: { onClose: () => void }) {
   return (
     <div className="modal-mask">
@@ -94,6 +95,7 @@ function useSteps(
   };
 }
 
+// @uxid app/components/exporter::Steps
 function Steps<
   T extends {
     name: string;
@@ -137,6 +139,7 @@ function Steps<
   );
 }
 
+// @uxid app/components/exporter::MessageExporter
 export function MessageExporter() {
   const steps = [
     {
@@ -255,6 +258,7 @@ export function MessageExporter() {
   );
 }
 
+// @uxid app/components/exporter::RenderExport
 export function RenderExport(props: {
   messages: ChatMessage[];
   onRender: (messages: ChatMessage[]) => void;
@@ -301,6 +305,7 @@ export function RenderExport(props: {
   );
 }
 
+// @uxid app/components/exporter::PreviewActions
 export function PreviewActions(props: {
   download: () => void;
   copy: () => void;
@@ -406,6 +411,7 @@ export function PreviewActions(props: {
   );
 }
 
+// @uxid app/components/exporter::ImagePreviewer
 export function ImagePreviewer(props: {
   messages: ChatMessage[];
   topic: string;
@@ -615,6 +621,7 @@ export function ImagePreviewer(props: {
   );
 }
 
+// @uxid app/components/exporter::MarkdownPreviewer
 export function MarkdownPreviewer(props: {
   messages: ChatMessage[];
   topic: string;
@@ -652,6 +659,7 @@ export function MarkdownPreviewer(props: {
   );
 }
 
+// @uxid app/components/exporter::JsonPreviewer
 export function JsonPreviewer(props: {
   messages: ChatMessage[];
   topic: string;
