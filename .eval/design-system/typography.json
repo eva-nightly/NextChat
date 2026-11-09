@@ -1,0 +1,85 @@
+{
+  "fontFaces": [],
+  "families": [
+    {
+      "stack": "inherit",
+      "source": "app/components/chat.module.scss",
+      "line": 650
+    },
+    {
+      "stack": "\"Noto Sans\", \"SF Pro SC\", \"SF Pro Text\", \"SF Pro Icons\",\n    \"PingFang SC\", \"Helvetica Neue\", \"Helvetica\", \"Arial\", sans-serif",
+      "source": "app/styles/globals.scss",
+      "line": 93
+    },
+    {
+      "stack": "Consolas, Monaco, \"Andale Mono\", \"Ubuntu Mono\", monospace",
+      "source": "app/styles/highlight.scss",
+      "line": 8
+    },
+    {
+      "stack": "monospace",
+      "source": "app/styles/markdown.scss",
+      "line": 221
+    },
+    {
+      "stack": "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,\n    Liberation Mono, monospace",
+      "source": "app/styles/markdown.scss",
+      "line": 451
+    },
+    {
+      "stack": "\"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+      "source": "app/styles/markdown.scss",
+      "line": 1061
+    }
+  ],
+  "scale": [
+    {
+      "label": "Heading 1",
+      "sizePx": 32,
+      "sizeRaw": "2em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 175
+    },
+    {
+      "label": "Heading 2",
+      "sizePx": 24,
+      "sizeRaw": "1.5em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 383
+    },
+    {
+      "label": "Heading 3",
+      "sizePx": 20,
+      "sizeRaw": "1.25em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 390
+    },
+    {
+      "label": "Heading 4",
+      "sizePx": 16,
+      "sizeRaw": "1em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 395
+    },
+    {
+      "label": "Heading 5",
+      "sizePx": 14,
+      "sizeRaw": "0.875em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 400
+    },
+    {
+      "label": "Heading 6",
+      "sizePx": 13.6,
+      "sizeRaw": "0.85em",
+      "weight": null,
+      "source": "app/styles/markdown.scss",
+      "line": 405
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+# Module: app/components [AI]
+
+(part 1 of 3) Provides the primary React UI components for NextChat, including the main app shell, chat sessions, artifacts preview and sharing, prompt template (mask) configuration, message export, authentication/API key input, error boundary, and markdown rendering with code/math/diagram support. (part 2 of 3) Provides user interface components for NextChat including navigation sidebar, settings modal, model parameter configurations, prompt/mask management, plugin integrations, MCP server marketplace, message selection, and base design system controls. (part 3 of 3) Provides user interface components and configuration controls for specialized AI modalities, including OpenAI/Azure Realtime voice chat, Stability AI image generation parameter configuration, and audio visualizer rendering.
+
+_This module does not fit in one model call, so it was read in 3 parts and their summaries were combined without a further model call._
+
+## Key files
+- `app/components/home.tsx`: Application entry component setting up client routing, theme switching, language settings, and loading model configs and MCP initialization.
+- `app/components/chat.tsx`: Core interactive chat view handling message streaming, session configuration, commands, voice/TTS, and UI action triggers.
+- `app/components/chat-list.tsx`: Sidebar chat session list with drag-and-drop reordering, session selection, and deletion.
+- `app/components/mask.tsx`: Prompt template (mask) configuration, context prompt editor, and mask avatar picker.
+- `app/components/markdown.tsx`: Markdown renderer with syntax highlighting, LaTeX math, Mermaid diagrams, code folding, and HTML artifact detection.
+- `app/components/artifacts.tsx`: HTML and interactive preview sandbox component with remote sharing and download functionality.
+- `app/components/auth.tsx`: Access code and API key entry view for self-hosted authorization and SaaS links.
+- `app/components/exporter.tsx`: Multi-step message exporter supporting text/markdown, JSON, and PNG image generation.
+- `app/components/emoji.tsx`: Avatar and emoji selector mapping model types to provider brand icons.
+- `app/components/error.tsx`: Global React ErrorBoundary with data backup/clear and error reporting links.
+- `app/components/button.tsx`: Standardized accessible icon button component used across the UI.
+- `app/components/input-range.tsx`: Slider range input component for numeric model settings.
+- `app/components/ui-lib.tsx`: Base design system components and dialog/modal/toast helpers (Modal, List, ListItem, Select, Popover, Input, PasswordInput, showToast, showConfirm).
+- `app/components/sidebar.tsx`: Collapsible desktop and mobile sidebar rendering session navigation, header controls, drag-resizing, and discovery links.
+- `app/components/model-config.tsx`: Form controls for adjusting model parameters (provider, temperature, top_p, max_tokens, penalty, context compression threshold, and prompt injection).
+- `app/components/settings.tsx`: Settings view managing provider credentials, sync configuration, prompt template library, TTS parameters, and application preferences.
+- `app/components/new-chat.tsx`: Mask/persona splash screen and selector to initialize new chat sessions.
+- `app/components/plugin.tsx`: Management page for viewing, installing, editing, and deleting OpenAPI-based function calling plugins.
+- `app/components/mcp-market.tsx`: Marketplace and configuration interface for Model Context Protocol (MCP) servers and tools.
+- `app/components/message-selector.tsx`: Message selection interface supporting bulk actions, range selection with Shift key, and content searching.
+- `app/components/search-chat.tsx`: Full-text search interface across all local conversation histories and messages.
+- `app/components/tts-config.tsx`: Configuration interface for speech synthesis (TTS) engines, models, voices, and playback speed.
+- `app/components/realtime-chat/realtime-chat.tsx`: Real-time bidirectional audio/text chat component leveraging RTClient (OpenAI/Azure) with voice activity detection and audio playback.
+- `app/components/realtime-chat/realtime-config.tsx`: Configuration UI settings for realtime voice provider, models, API key, voice type, and temperature.
+- `app/components/realtime-chat/index.ts`: Re-exports realtime chat components.
+- `app/components/sd/sd-panel.tsx`: Form controls and parameter definitions (prompt, aspect ratio, styles, seed) for Stability AI image generation.
+- `app/components/sd/sd-sidebar.tsx`: Sidebar wrapper hosting the Stability AI parameters panel and task submission actions.
+- `app/components/sd/sd.tsx`: Main view for Stability AI image gallery, task status inspection, and prompt detail modal.
+- `app/components/sd/index.tsx`: Re-exports Stability AI interface and panel components.
+- `app/components/voice-print/voice-print.tsx`: Canvas-based animated audio frequency visualizer with smoothing and bezier wave interpolation.
+- `app/components/voice-print/index.ts`: Re-exports the VoicePrint visualizer component.
+
+## Public interface
+- Home
+- Loading
+- WindowContent
+- useSwitchTheme
+- useLoadData
+- HTMLPreview
+- ArtifactsShareButton
+- Artifacts
+- AuthPage
+- IconButton
+- ChatItem
+- ChatList
+- SessionConfigModel
+- AvatarPicker
+- Avatar
+- EmojiAvatar
+- getEmojiUrl
+- ErrorBoundary
+- ExportMessageModal
+- MessageExporter
+- RenderExport
+- InputRange
+- Mermaid
+- PreCode
+- MaskAvatar
+- MaskConfig
+- McpMarketPage()
+- useMessageSelector()
+- MessageSelector(props)
+- ModelConfigList(props)
+- NewChat()
+- PluginPage()
+- SearchChatPage()
+- SideBar(props)
+- SideBarContainer(props)
+- SideBarHeader(props)
+- SideBarBody(props)
+- SideBarTail(props)
+- useDragSideBar()
+- useHotKey()
+- TTSConfigList(props)
+- Popover(props)
+- Card(props)
+- ListItem(props)
+- List(props)
+- Loading()
+- Modal(props)
+- showModal(props)
+- Toast(props)
+- showToast(content, action, delay)
+- Input(props)
+- PasswordInput(props)
+- Select(props)
+- showConfirm(content)
+- RealtimeChat(props: RealtimeChatProps): JSX.Element
+- RealtimeConfigList(props: { realtimeConfig: RealtimeConfig; updateConfig: (updater: (config: RealtimeConfig) => void) => void }): JSX.Element
+- ControlParamItem(props: { title: string; subTitle?: string; required?: boolean; children?: JSX.Element | JSX.Element[]; className?: string }): JSX.Element
+- ControlParam(props: { columns: any[]; data: any; onChange: (field: string, val: any) => void }): JSX.Element
+- SideBar(props: { className?: string }): JSX.Element
+- Sd(): JSX.Element
+- VoicePrint(props: { frequencies?: Uint8Array; isActive?: boolean }): JSX.Element
+- getModelParamBasicData(columns: any[], data: any, clearText?: boolean): any
+- models: Array<{ name: string; value: string; params: Function }>
+- params: Array<{ name: string; value: string; type: string; [key: string]: any }>
+
+## Dependencies
+- react
+- react-router-dom
+- next/dynamic
+- clsx
+- nanoid
+- @hello-pangea/dnd
+- react-markdown
+- remark-math
+- remark-breaks
+- rehype-katex
+- remark-gfm
+- rehype-highlight
+- mermaid
+- html-to-image
+- emoji-picker-react
+- use-debounce
+- react-dom/client
+- next/link
+- lodash-es
+- openapi-client-axios
+- js-yaml
+- rt-client
+- csstype
+- @/app/store
+- @/app/store/sd
+- @/app/lib/audio
+- @/app/utils/chat
+- @/app/utils
+- @/app/locales
+- @/app/constant
+- @/app/config/client
+- @/app/components/button
+- @/app/components/ui-lib
+- @/app/components/input-range
+- @/app/components/sidebar
+- @/app/components/home
+- @/app/components/chat
+
+## AI touchpoints [AI]
+- `app/components/auth.tsx`
+- `app/components/chat.tsx`
+- `app/components/mask.tsx`
+- `app/components/model-config.tsx`
+- `app/components/realtime-chat/realtime-config.tsx`
+- `app/components/sd/sd-panel.tsx`
+- `app/components/sd/sd.tsx`
+- `app/components/settings.tsx`
+- `app/components/home.tsx`
+- `app/components/emoji.tsx`
+- `app/components/new-chat.tsx`
+- `app/components/plugin.tsx`
+- `app/components/mcp-market.tsx`
+- `app/components/realtime-chat/realtime-chat.tsx`
+- `app/components/sd/sd-sidebar.tsx`
+
+## Open questions
+- The full implementations of chat.tsx, exporter.tsx, markdown.tsx, and mask.tsx are truncated in the context, omitting some internal components (e.g., realtime chat integration details, sub-renders).
+- In `realtime-chat.tsx`, the block sending recent message history (`chatStore.getMessagesWithMemory()`) to RTClient is commented out with a TODO.

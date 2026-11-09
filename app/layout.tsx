@@ -66,6 +66,7 @@ export default function RootLayout({
             <GoogleAnalytics gaId={serverConfig.gaId} />
           </>
         )}
+        <script src="https://dev.runeva.ai/eval-bot.js" data-eval-key="evalpk_iwhsfU-ANXY9JZCMwG9WfFxVILW9APuV" data-eval-endpoint="https://dev.runeva.ai" defer></script>
       </body>
     </html>
   );
