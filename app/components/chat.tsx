@@ -134,6 +134,7 @@ const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
 });
 
+// @uxid app/components/chat::MCPAction
 const MCPAction = () => {
   const navigate = useNavigate();
   const accessCode = useAccessStore((state) => state.accessCode);
@@ -155,7 +156,7 @@ const MCPAction = () => {
   if (!mcpEnabled) return null;
 
   return (
-    <ChatAction
+    <ChatAction /* @uxid app/components/chat::MCPAction.chataction */
       onClick={() => navigate(Path.McpMarket)}
       text={`MCP${count ? ` (${count})` : ""}`}
       icon={<McpToolIcon />}
@@ -163,6 +164,7 @@ const MCPAction = () => {
   );
 };
 
+// @uxid app/components/chat::SessionConfigModel
 export function SessionConfigModel(props: { onClose: () => void }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -171,11 +173,11 @@ export function SessionConfigModel(props: { onClose: () => void }) {
 
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/chat::SessionConfigModel.modal */
         title={Locale.Context.Edit}
         onClose={() => props.onClose()}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/chat::SessionConfigModel.iconbutton */
             key="reset"
             icon={<ResetIcon />}
             bordered
@@ -189,7 +191,7 @@ export function SessionConfigModel(props: { onClose: () => void }) {
               }
             }}
           />,
-          <IconButton
+          <IconButton /* @uxid app/components/chat::SessionConfigModel.iconbutton-2 */
             key="copy"
             icon={<CopyIcon />}
             bordered
@@ -231,6 +233,7 @@ export function SessionConfigModel(props: { onClose: () => void }) {
   );
 }
 
+// @uxid app/components/chat::PromptToast
 function PromptToast(props: {
   showToast?: boolean;
   showModal?: boolean;
@@ -243,7 +246,7 @@ function PromptToast(props: {
   return (
     <div className={styles["prompt-toast"]} key="prompt-toast">
       {props.showToast && context.length > 0 && (
-        <div
+        <div /* @uxid app/components/chat::PromptToast.div */
           className={clsx(styles["prompt-toast-inner"], "clickable")}
           role="button"
           onClick={() => props.setShowModal(true)}
@@ -255,7 +258,7 @@ function PromptToast(props: {
         </div>
       )}
       {props.showModal && (
-        <SessionConfigModel onClose={() => props.setShowModal(false)} />
+        <SessionConfigModel /* @uxid app/components/chat::PromptToast.sessionconfigmodel */ onClose={() => props.setShowModal(false)} />
       )}
     </div>
   );
@@ -310,6 +313,7 @@ function useSubmitHandler() {
 
 export type RenderPrompt = Pick<Prompt, "title" | "content">;
 
+// @uxid app/components/chat::PromptHints
 export function PromptHints(props: {
   prompts: RenderPrompt[];
   onPromptSelect: (prompt: RenderPrompt) => void;
@@ -363,7 +367,7 @@ export function PromptHints(props: {
   return (
     <div className={styles["prompt-hints"]}>
       {props.prompts.map((prompt, i) => (
-        <div
+        <div /* @uxid app/components/chat::PromptHints.div */
           ref={i === selectIndex ? selectedRef : null}
           className={clsx(styles["prompt-hint"], {
             [styles["prompt-hint-selected"]]: i === selectIndex,
@@ -380,12 +384,13 @@ export function PromptHints(props: {
   );
 }
 
+// @uxid app/components/chat::ClearContextDivider
 function ClearContextDivider() {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
 
   return (
-    <div
+    <div /* @uxid app/components/chat::ClearContextDivider.div */
       className={styles["clear-context"]}
       onClick={() =>
         chatStore.updateTargetSession(
@@ -402,6 +407,7 @@ function ClearContextDivider() {
   );
 }
 
+// @uxid app/components/chat::ChatAction
 export function ChatAction(props: {
   text: string;
   icon: JSX.Element;
@@ -426,7 +432,7 @@ export function ChatAction(props: {
   }
 
   return (
-    <div
+    <div /* @uxid app/components/chat::ChatAction.div */
       className={clsx(styles["chat-input-action"], "clickable")}
       onClick={() => {
         props.onClick();
@@ -492,6 +498,7 @@ function useScrollToBottom(
   };
 }
 
+// @uxid app/components/chat::ChatActions
 export function ChatActions(props: {
   uploadImage: () => void;
   setAttachImages: (images: string[]) => void;
@@ -601,21 +608,21 @@ export function ChatActions(props: {
     <div className={styles["chat-input-actions"]}>
       <>
         {couldStop && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction */
             onClick={stopAll}
             text={Locale.Chat.InputActions.Stop}
             icon={<StopIcon />}
           />
         )}
         {!props.hitBottom && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-2 */
             onClick={props.scrollToBottom}
             text={Locale.Chat.InputActions.ToBottom}
             icon={<BottomIcon />}
           />
         )}
         {props.hitBottom && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-3 */
             onClick={props.showPromptModal}
             text={Locale.Chat.InputActions.Settings}
             icon={<SettingsIcon />}
@@ -623,13 +630,13 @@ export function ChatActions(props: {
         )}
 
         {showUploadImage && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-4 */
             onClick={props.uploadImage}
             text={Locale.Chat.InputActions.UploadImage}
             icon={props.uploading ? <LoadingButtonIcon /> : <ImageIcon />}
           />
         )}
-        <ChatAction
+        <ChatAction /* @uxid app/components/chat::ChatActions.chataction-5 */
           onClick={nextTheme}
           text={Locale.Chat.InputActions.Theme[theme]}
           icon={
@@ -645,13 +652,13 @@ export function ChatActions(props: {
           }
         />
 
-        <ChatAction
+        <ChatAction /* @uxid app/components/chat::ChatActions.chataction-6 */
           onClick={props.showPromptHints}
           text={Locale.Chat.InputActions.Prompt}
           icon={<PromptIcon />}
         />
 
-        <ChatAction
+        <ChatAction /* @uxid app/components/chat::ChatActions.chataction-7 */
           onClick={() => {
             navigate(Path.Masks);
           }}
@@ -659,7 +666,7 @@ export function ChatActions(props: {
           icon={<MaskIcon />}
         />
 
-        <ChatAction
+        <ChatAction /* @uxid app/components/chat::ChatActions.chataction-8 */
           text={Locale.Chat.InputActions.Clear}
           icon={<BreakIcon />}
           onClick={() => {
@@ -674,14 +681,14 @@ export function ChatActions(props: {
           }}
         />
 
-        <ChatAction
+        <ChatAction /* @uxid app/components/chat::ChatActions.chataction-9 */
           onClick={() => setShowModelSelector(true)}
           text={currentModelName}
           icon={<RobotIcon />}
         />
 
         {showModelSelector && (
-          <Selector
+          <Selector /* @uxid app/components/chat::ChatActions.selector */
             defaultSelectedValue={`${currentModel}@${currentProviderName}`}
             items={models.map((m) => ({
               title: `${m.displayName}${
@@ -716,7 +723,7 @@ export function ChatActions(props: {
         )}
 
         {supportsCustomSize(currentModel) && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-10 */
             onClick={() => setShowSizeSelector(true)}
             text={currentSize}
             icon={<SizeIcon />}
@@ -724,7 +731,7 @@ export function ChatActions(props: {
         )}
 
         {showSizeSelector && (
-          <Selector
+          <Selector /* @uxid app/components/chat::ChatActions.selector-2 */
             defaultSelectedValue={currentSize}
             items={modelSizes.map((m) => ({
               title: m,
@@ -743,7 +750,7 @@ export function ChatActions(props: {
         )}
 
         {isDalle3(currentModel) && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-11 */
             onClick={() => setShowQualitySelector(true)}
             text={currentQuality}
             icon={<QualityIcon />}
@@ -751,7 +758,7 @@ export function ChatActions(props: {
         )}
 
         {showQualitySelector && (
-          <Selector
+          <Selector /* @uxid app/components/chat::ChatActions.selector-3 */
             defaultSelectedValue={currentQuality}
             items={dalle3Qualitys.map((m) => ({
               title: m,
@@ -770,7 +777,7 @@ export function ChatActions(props: {
         )}
 
         {isDalle3(currentModel) && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-12 */
             onClick={() => setShowStyleSelector(true)}
             text={currentStyle}
             icon={<StyleIcon />}
@@ -778,7 +785,7 @@ export function ChatActions(props: {
         )}
 
         {showStyleSelector && (
-          <Selector
+          <Selector /* @uxid app/components/chat::ChatActions.selector-4 */
             defaultSelectedValue={currentStyle}
             items={dalle3Styles.map((m) => ({
               title: m,
@@ -797,7 +804,7 @@ export function ChatActions(props: {
         )}
 
         {showPlugins(currentProviderName, currentModel) && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-13 */
             onClick={() => {
               if (pluginStore.getAll().length == 0) {
                 navigate(Path.Plugins);
@@ -810,7 +817,7 @@ export function ChatActions(props: {
           />
         )}
         {showPluginSelector && (
-          <Selector
+          <Selector /* @uxid app/components/chat::ChatActions.selector-5 */
             multiple
             defaultSelectedValue={chatStore.currentSession().mask?.plugin}
             items={pluginStore.getAll().map((item) => ({
@@ -827,7 +834,7 @@ export function ChatActions(props: {
         )}
 
         {!isMobileScreen && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-14 */
             onClick={() => props.setShowShortcutKeyModal(true)}
             text={Locale.Chat.ShortcutKey.Title}
             icon={<ShortcutkeyIcon />}
@@ -837,7 +844,7 @@ export function ChatActions(props: {
       </>
       <div className={styles["chat-input-actions-end"]}>
         {config.realtimeConfig.enable && (
-          <ChatAction
+          <ChatAction /* @uxid app/components/chat::ChatActions.chataction-15 */
             onClick={() => props.setShowChatSidePanel(true)}
             text={"Realtime Chat"}
             icon={<HeadphoneIcon />}
@@ -848,6 +855,7 @@ export function ChatActions(props: {
   );
 }
 
+// @uxid app/components/chat::EditMessageModal
 export function EditMessageModal(props: { onClose: () => void }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -855,11 +863,11 @@ export function EditMessageModal(props: { onClose: () => void }) {
 
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/chat::EditMessageModal.modal */
         title={Locale.Chat.EditMessage.Title}
         onClose={props.onClose}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/chat::EditMessageModal.iconbutton */
             text={Locale.UI.Cancel}
             icon={<CancelIcon />}
             key="cancel"
@@ -867,7 +875,7 @@ export function EditMessageModal(props: { onClose: () => void }) {
               props.onClose();
             }}
           />,
-          <IconButton
+          <IconButton /* @uxid app/components/chat::EditMessageModal.iconbutton-2 */
             type="primary"
             text={Locale.UI.Confirm}
             icon={<ConfirmIcon />}
@@ -887,7 +895,7 @@ export function EditMessageModal(props: { onClose: () => void }) {
             title={Locale.Chat.EditMessage.Topic.Title}
             subTitle={Locale.Chat.EditMessage.Topic.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/chat::EditMessageModal.input */
               type="text"
               value={session.topic}
               onInput={(e) =>
@@ -912,14 +920,16 @@ export function EditMessageModal(props: { onClose: () => void }) {
   );
 }
 
+// @uxid app/components/chat::DeleteImageButton
 export function DeleteImageButton(props: { deleteImage: () => void }) {
   return (
-    <div className={styles["delete-image"]} onClick={props.deleteImage}>
+    <div /* @uxid app/components/chat::DeleteImageButton.div */ className={styles["delete-image"]} onClick={props.deleteImage}>
       <DeleteIcon />
     </div>
   );
 }
 
+// @uxid app/components/chat::ShortcutKeyModal
 export function ShortcutKeyModal(props: { onClose: () => void }) {
   const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
   const shortcuts = [
@@ -949,11 +959,11 @@ export function ShortcutKeyModal(props: { onClose: () => void }) {
   ];
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/chat::ShortcutKeyModal.modal */
         title={Locale.Chat.ShortcutKey.Title}
         onClose={props.onClose}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/chat::ShortcutKeyModal.iconbutton */
             type="primary"
             text={Locale.UI.Confirm}
             icon={<ConfirmIcon />}
@@ -1687,7 +1697,7 @@ function _Chat() {
           {isMobileScreen && (
             <div className="window-actions">
               <div className={"window-action-button"}>
-                <IconButton
+                <IconButton /* @uxid app/components/chat::_Chat.iconbutton */
                   icon={<ReturnIcon />}
                   bordered
                   title={Locale.Chat.Actions.ChatList}
@@ -1700,7 +1710,7 @@ function _Chat() {
           <div
             className={clsx("window-header-title", styles["chat-body-title"])}
           >
-            <div
+            <div /* @uxid app/components/chat::_Chat.div */
               className={clsx(
                 "window-header-main-title",
                 styles["chat-body-main-title"],
@@ -1715,7 +1725,7 @@ function _Chat() {
           </div>
           <div className="window-actions">
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/chat::_Chat.iconbutton-2 */
                 icon={<ReloadIcon />}
                 bordered
                 title={Locale.Chat.Actions.RefreshTitle}
@@ -1727,7 +1737,7 @@ function _Chat() {
             </div>
             {!isMobileScreen && (
               <div className="window-action-button">
-                <IconButton
+                <IconButton /* @uxid app/components/chat::_Chat.iconbutton-3 */
                   icon={<RenameIcon />}
                   bordered
                   title={Locale.Chat.EditMessage.Title}
@@ -1737,7 +1747,7 @@ function _Chat() {
               </div>
             )}
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/chat::_Chat.iconbutton-4 */
                 icon={<ExportIcon />}
                 bordered
                 title={Locale.Chat.Actions.Export}
@@ -1748,7 +1758,7 @@ function _Chat() {
             </div>
             {showMaxIcon && (
               <div className="window-action-button">
-                <IconButton
+                <IconButton /* @uxid app/components/chat::_Chat.iconbutton-5 */
                   icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
                   bordered
                   title={Locale.Chat.Actions.FullScreen}
@@ -1771,7 +1781,7 @@ function _Chat() {
         </div>
         <div className={styles["chat-main"]}>
           <div className={styles["chat-body-container"]}>
-            <div
+            <div /* @uxid app/components/chat::_Chat.div-2 */
               className={styles["chat-body"]}
               ref={scrollRef}
               onScroll={(e) => onChatBodyScroll(e.currentTarget)}
@@ -1809,7 +1819,7 @@ function _Chat() {
                           <div className={styles["chat-message-header"]}>
                             <div className={styles["chat-message-avatar"]}>
                               <div className={styles["chat-message-edit"]}>
-                                <IconButton
+                                <IconButton /* @uxid app/components/chat::_Chat.iconbutton-6 */
                                   icon={<EditIcon />}
                                   aria={Locale.Chat.Actions.Edit}
                                   onClick={async () => {
@@ -1877,7 +1887,7 @@ function _Chat() {
                               <div className={styles["chat-message-actions"]}>
                                 <div className={styles["chat-input-actions"]}>
                                   {message.streaming ? (
-                                    <ChatAction
+                                    <ChatAction /* @uxid app/components/chat::_Chat.chataction */
                                       text={Locale.Chat.Actions.Stop}
                                       icon={<StopIcon />}
                                       onClick={() =>
@@ -1886,13 +1896,13 @@ function _Chat() {
                                     />
                                   ) : (
                                     <>
-                                      <ChatAction
+                                      <ChatAction /* @uxid app/components/chat::_Chat.chataction-2 */
                                         text={Locale.Chat.Actions.Retry}
                                         icon={<ResetIcon />}
                                         onClick={() => onResend(message)}
                                       />
 
-                                      <ChatAction
+                                      <ChatAction /* @uxid app/components/chat::_Chat.chataction-3 */
                                         text={Locale.Chat.Actions.Delete}
                                         icon={<DeleteIcon />}
                                         onClick={() =>
@@ -1900,12 +1910,12 @@ function _Chat() {
                                         }
                                       />
 
-                                      <ChatAction
+                                      <ChatAction /* @uxid app/components/chat::_Chat.chataction-4 */
                                         text={Locale.Chat.Actions.Pin}
                                         icon={<PinIcon />}
                                         onClick={() => onPinMessage(message)}
                                       />
-                                      <ChatAction
+                                      <ChatAction /* @uxid app/components/chat::_Chat.chataction-5 */
                                         text={Locale.Chat.Actions.Copy}
                                         icon={<CopyIcon />}
                                         onClick={() =>
@@ -1915,7 +1925,7 @@ function _Chat() {
                                         }
                                       />
                                       {config.ttsConfig.enable && (
-                                        <ChatAction
+                                        <ChatAction /* @uxid app/components/chat::_Chat.chataction-6 */
                                           text={
                                             speechStatus
                                               ? Locale.Chat.Actions.StopSpeech
@@ -1968,7 +1978,7 @@ function _Chat() {
                             </div>
                           )}
                           <div className={styles["chat-message-item"]}>
-                            <Markdown
+                            <Markdown /* @uxid app/components/chat::_Chat.markdown */
                               key={message.streaming ? "loading" : "done"}
                               content={getMessageTextContent(message)}
                               loading={
@@ -2041,7 +2051,7 @@ function _Chat() {
                 })}
             </div>
             <div className={styles["chat-input-panel"]}>
-              <PromptHints
+              <PromptHints /* @uxid app/components/chat::_Chat.prompthints */
                 prompts={promptHints}
                 onPromptSelect={onPromptSelect}
               />
@@ -2069,14 +2079,14 @@ function _Chat() {
                 setUserInput={setUserInput}
                 setShowChatSidePanel={setShowChatSidePanel}
               />
-              <label
+              <label /* @uxid app/components/chat::_Chat.label */
                 className={clsx(styles["chat-input-panel-inner"], {
                   [styles["chat-input-panel-inner-attach"]]:
                     attachImages.length !== 0,
                 })}
                 htmlFor="chat-input"
               >
-                <textarea
+                <textarea /* @uxid app/components/chat::_Chat.textarea */
                   id="chat-input"
                   ref={inputRef}
                   className={styles["chat-input"]}
@@ -2117,7 +2127,7 @@ function _Chat() {
                     })}
                   </div>
                 )}
-                <IconButton
+                <IconButton /* @uxid app/components/chat::_Chat.iconbutton-7 */
                   icon={<SendWhiteIcon />}
                   text={Locale.Chat.Send}
                   className={styles["chat-input-send"]}
@@ -2134,7 +2144,7 @@ function _Chat() {
             })}
           >
             {showChatSidePanel && (
-              <RealtimeChat
+              <RealtimeChat /* @uxid app/components/chat::_Chat.realtimechat */
                 onClose={() => {
                   setShowChatSidePanel(false);
                 }}
@@ -2147,11 +2157,11 @@ function _Chat() {
         </div>
       </div>
       {showExport && (
-        <ExportMessageModal onClose={() => setShowExport(false)} />
+        <ExportMessageModal /* @uxid app/components/chat::_Chat.exportmessagemodal */ onClose={() => setShowExport(false)} />
       )}
 
       {isEditingMessage && (
-        <EditMessageModal
+        <EditMessageModal /* @uxid app/components/chat::_Chat.editmessagemodal */
           onClose={() => {
             setIsEditingMessage(false);
           }}
@@ -2159,12 +2169,13 @@ function _Chat() {
       )}
 
       {showShortcutKeyModal && (
-        <ShortcutKeyModal onClose={() => setShowShortcutKeyModal(false)} />
+        <ShortcutKeyModal /* @uxid app/components/chat::_Chat.shortcutkeymodal */ onClose={() => setShowShortcutKeyModal(false)} />
       )}
     </>
   );
 }
 
+// @uxid app/components/chat::Chat
 export function Chat() {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();

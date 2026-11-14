@@ -67,7 +67,7 @@ function getSdTaskStatus(item: any) {
         {Locale.Sd.Status.Name}: {s}
       </span>
       {item.status === "error" && (
-        <span
+        <span /* @uxid app/components/sd/sd::getSdTaskStatus.span */
           className="clickable"
           onClick={() => {
             showModal({
@@ -87,6 +87,7 @@ function getSdTaskStatus(item: any) {
   );
 }
 
+// @uxid app/components/sd/sd::Sd
 export function Sd() {
   const isMobileScreen = useMobileScreen();
   const navigate = useNavigate();
@@ -112,7 +113,7 @@ export function Sd() {
             {isMobileScreen && (
               <div className="window-actions">
                 <div className={"window-action-button"}>
-                  <IconButton
+                  <IconButton /* @uxid app/components/sd/sd::Sd.iconbutton */
                     icon={<ReturnIcon />}
                     bordered
                     title={Locale.Chat.Actions.ChatList}
@@ -136,7 +137,7 @@ export function Sd() {
             <div className="window-actions">
               {showMaxIcon && (
                 <div className="window-action-button">
-                  <IconButton
+                  <IconButton /* @uxid app/components/sd/sd::Sd.iconbutton-2 */
                     aria={Locale.Chat.Actions.FullScreen}
                     icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
                     bordered
@@ -162,7 +163,7 @@ export function Sd() {
                       className={styles["sd-img-item"]}
                     >
                       {item.status === "success" ? (
-                        <img
+                        <img /* @uxid app/components/sd/sd::Sd.img */
                           className={styles["img"]}
                           src={item.img_data}
                           alt={item.id}
@@ -194,7 +195,7 @@ export function Sd() {
                       >
                         <p className={styles["line-1"]}>
                           {Locale.SdPanel.Prompt}:{" "}
-                          <span
+                          <span /* @uxid app/components/sd/sd::Sd.span */
                             className="clickable"
                             title={item.params.prompt}
                             onClick={() => {
@@ -218,7 +219,7 @@ export function Sd() {
                         <p>{item.created_at}</p>
                         <div className={chatStyles["chat-message-actions"]}>
                           <div className={chatStyles["chat-input-actions"]}>
-                            <ChatAction
+                            <ChatAction /* @uxid app/components/sd/sd::Sd.chataction */
                               text={Locale.Sd.Actions.Params}
                               icon={<PromptIcon />}
                               onClick={() => {
@@ -278,7 +279,7 @@ export function Sd() {
                                 });
                               }}
                             />
-                            <ChatAction
+                            <ChatAction /* @uxid app/components/sd/sd::Sd.chataction-2 */
                               text={Locale.Sd.Actions.Copy}
                               icon={<CopyIcon />}
                               onClick={() =>
@@ -290,7 +291,7 @@ export function Sd() {
                                 )
                               }
                             />
-                            <ChatAction
+                            <ChatAction /* @uxid app/components/sd/sd::Sd.chataction-3 */
                               text={Locale.Sd.Actions.Retry}
                               icon={<ResetIcon />}
                               onClick={() => {
@@ -305,7 +306,7 @@ export function Sd() {
                                 sdStore.sendTask(reqData);
                               }}
                             />
-                            <ChatAction
+                            <ChatAction /* @uxid app/components/sd/sd::Sd.chataction-4 */
                               text={Locale.Sd.Actions.Delete}
                               icon={<DeleteIcon />}
                               onClick={async () => {

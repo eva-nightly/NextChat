@@ -90,17 +90,18 @@ import { ProviderType } from "../utils/cloud";
 import { TTSConfigList } from "./tts-config";
 import { RealtimeConfigList } from "./realtime-chat/realtime-config";
 
+// @uxid app/components/settings::EditPromptModal
 function EditPromptModal(props: { id: string; onClose: () => void }) {
   const promptStore = usePromptStore();
   const prompt = promptStore.get(props.id);
 
   return prompt ? (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/settings::EditPromptModal.modal */
         title={Locale.Settings.Prompt.EditModal.Title}
         onClose={props.onClose}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/settings::EditPromptModal.iconbutton */
             key=""
             onClick={props.onClose}
             text={Locale.UI.Confirm}
@@ -109,7 +110,7 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
         ]}
       >
         <div className={styles["edit-prompt-modal"]}>
-          <input
+          <input /* @uxid app/components/settings::EditPromptModal.input */
             type="text"
             value={prompt.title}
             readOnly={!prompt.isUser}
@@ -121,7 +122,7 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
               )
             }
           ></input>
-          <Input
+          <Input /* @uxid app/components/settings::EditPromptModal.input-2 */
             value={prompt.content}
             readOnly={!prompt.isUser}
             className={styles["edit-prompt-content"]}
@@ -139,6 +140,7 @@ function EditPromptModal(props: { id: string; onClose: () => void }) {
   ) : null;
 }
 
+// @uxid app/components/settings::UserPromptModal
 function UserPromptModal(props: { onClose?: () => void }) {
   const promptStore = usePromptStore();
   const userPrompts = promptStore.getUserPrompts();
@@ -161,11 +163,11 @@ function UserPromptModal(props: { onClose?: () => void }) {
 
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/settings::UserPromptModal.modal */
         title={Locale.Settings.Prompt.Modal.Title}
         onClose={() => props.onClose?.()}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/settings::UserPromptModal.iconbutton */
             key="add"
             onClick={() => {
               const promptId = promptStore.add({
@@ -183,7 +185,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
         ]}
       >
         <div className={styles["user-prompt-modal"]}>
-          <input
+          <input /* @uxid app/components/settings::UserPromptModal.input */
             type="text"
             className={styles["user-prompt-search"]}
             placeholder={Locale.Settings.Prompt.Modal.Search}
@@ -203,26 +205,26 @@ function UserPromptModal(props: { onClose?: () => void }) {
 
                 <div className={styles["user-prompt-buttons"]}>
                   {v.isUser && (
-                    <IconButton
+                    <IconButton /* @uxid app/components/settings::UserPromptModal.iconbutton-2 */
                       icon={<ClearIcon />}
                       className={styles["user-prompt-button"]}
                       onClick={() => promptStore.remove(v.id!)}
                     />
                   )}
                   {v.isUser ? (
-                    <IconButton
+                    <IconButton /* @uxid app/components/settings::UserPromptModal.iconbutton-3 */
                       icon={<EditIcon />}
                       className={styles["user-prompt-button"]}
                       onClick={() => setEditingPromptId(v.id)}
                     />
                   ) : (
-                    <IconButton
+                    <IconButton /* @uxid app/components/settings::UserPromptModal.iconbutton-4 */
                       icon={<EyeIcon />}
                       className={styles["user-prompt-button"]}
                       onClick={() => setEditingPromptId(v.id)}
                     />
                   )}
-                  <IconButton
+                  <IconButton /* @uxid app/components/settings::UserPromptModal.iconbutton-5 */
                     icon={<CopyIcon />}
                     className={styles["user-prompt-button"]}
                     onClick={() => copyToClipboard(v.content)}
@@ -235,7 +237,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
       </Modal>
 
       {editingPromptId !== undefined && (
-        <EditPromptModal
+        <EditPromptModal /* @uxid app/components/settings::UserPromptModal.editpromptmodal */
           id={editingPromptId!}
           onClose={() => setEditingPromptId(undefined)}
         />
@@ -244,6 +246,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
   );
 }
 
+// @uxid app/components/settings::DangerItems
 function DangerItems() {
   const chatStore = useChatStore();
   const appConfig = useAppConfig();
@@ -254,7 +257,7 @@ function DangerItems() {
         title={Locale.Settings.Danger.Reset.Title}
         subTitle={Locale.Settings.Danger.Reset.SubTitle}
       >
-        <IconButton
+        <IconButton /* @uxid app/components/settings::DangerItems.iconbutton */
           aria={Locale.Settings.Danger.Reset.Title}
           text={Locale.Settings.Danger.Reset.Action}
           onClick={async () => {
@@ -269,7 +272,7 @@ function DangerItems() {
         title={Locale.Settings.Danger.Clear.Title}
         subTitle={Locale.Settings.Danger.Clear.SubTitle}
       >
-        <IconButton
+        <IconButton /* @uxid app/components/settings::DangerItems.iconbutton-2 */
           aria={Locale.Settings.Danger.Clear.Title}
           text={Locale.Settings.Danger.Clear.Action}
           onClick={async () => {
@@ -284,6 +287,7 @@ function DangerItems() {
   );
 }
 
+// @uxid app/components/settings::CheckButton
 function CheckButton() {
   const syncStore = useSyncStore();
 
@@ -304,7 +308,7 @@ function CheckButton() {
   if (!couldCheck) return null;
 
   return (
-    <IconButton
+    <IconButton /* @uxid app/components/settings::CheckButton.iconbutton */
       text={Locale.Settings.Sync.Config.Modal.Check}
       bordered
       onClick={check}
@@ -325,17 +329,18 @@ function CheckButton() {
   );
 }
 
+// @uxid app/components/settings::SyncConfigModal
 function SyncConfigModal(props: { onClose?: () => void }) {
   const syncStore = useSyncStore();
 
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/settings::SyncConfigModal.modal */
         title={Locale.Settings.Sync.Config.Modal.Title}
         onClose={() => props.onClose?.()}
         actions={[
           <CheckButton key="check" />,
-          <IconButton
+          <IconButton /* @uxid app/components/settings::SyncConfigModal.iconbutton */
             key="confirm"
             onClick={props.onClose}
             icon={<ConfirmIcon />}
@@ -349,7 +354,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
             title={Locale.Settings.Sync.Config.SyncType.Title}
             subTitle={Locale.Settings.Sync.Config.SyncType.SubTitle}
           >
-            <select
+            <select /* @uxid app/components/settings::SyncConfigModal.select */
               value={syncStore.provider}
               onChange={(e) => {
                 syncStore.update(
@@ -359,7 +364,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
               }}
             >
               {Object.entries(ProviderType).map(([k, v]) => (
-                <option value={v} key={k}>
+                <option /* @uxid app/components/settings::SyncConfigModal.option */ value={v} key={k}>
                   {k}
                 </option>
               ))}
@@ -370,7 +375,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
             title={Locale.Settings.Sync.Config.Proxy.Title}
             subTitle={Locale.Settings.Sync.Config.Proxy.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::SyncConfigModal.checkbox */
               type="checkbox"
               checked={syncStore.useProxy}
               onChange={(e) => {
@@ -385,7 +390,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
               title={Locale.Settings.Sync.Config.ProxyUrl.Title}
               subTitle={Locale.Settings.Sync.Config.ProxyUrl.SubTitle}
             >
-              <input
+              <input /* @uxid app/components/settings::SyncConfigModal.input */
                 type="text"
                 value={syncStore.proxyUrl}
                 onChange={(e) => {
@@ -402,7 +407,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
           <>
             <List>
               <ListItem title={Locale.Settings.Sync.Config.WebDav.Endpoint}>
-                <input
+                <input /* @uxid app/components/settings::SyncConfigModal.input-2 */
                   type="text"
                   value={syncStore.webdav.endpoint}
                   onChange={(e) => {
@@ -415,7 +420,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
               </ListItem>
 
               <ListItem title={Locale.Settings.Sync.Config.WebDav.UserName}>
-                <input
+                <input /* @uxid app/components/settings::SyncConfigModal.input-3 */
                   type="text"
                   value={syncStore.webdav.username}
                   onChange={(e) => {
@@ -427,7 +432,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
                 ></input>
               </ListItem>
               <ListItem title={Locale.Settings.Sync.Config.WebDav.Password}>
-                <PasswordInput
+                <PasswordInput /* @uxid app/components/settings::SyncConfigModal.passwordinput */
                   value={syncStore.webdav.password}
                   onChange={(e) => {
                     syncStore.update(
@@ -444,7 +449,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
         {syncStore.provider === ProviderType.UpStash && (
           <List>
             <ListItem title={Locale.Settings.Sync.Config.UpStash.Endpoint}>
-              <input
+              <input /* @uxid app/components/settings::SyncConfigModal.input-4 */
                 type="text"
                 value={syncStore.upstash.endpoint}
                 onChange={(e) => {
@@ -457,7 +462,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
             </ListItem>
 
             <ListItem title={Locale.Settings.Sync.Config.UpStash.UserName}>
-              <input
+              <input /* @uxid app/components/settings::SyncConfigModal.input-5 */
                 type="text"
                 value={syncStore.upstash.username}
                 placeholder={STORAGE_KEY}
@@ -470,7 +475,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
               ></input>
             </ListItem>
             <ListItem title={Locale.Settings.Sync.Config.UpStash.Password}>
-              <PasswordInput
+              <PasswordInput /* @uxid app/components/settings::SyncConfigModal.passwordinput-2 */
                 value={syncStore.upstash.apiKey}
                 onChange={(e) => {
                   syncStore.update(
@@ -486,6 +491,7 @@ function SyncConfigModal(props: { onClose?: () => void }) {
   );
 }
 
+// @uxid app/components/settings::SyncItems
 function SyncItems() {
   const syncStore = useSyncStore();
   const chatStore = useChatStore();
@@ -523,7 +529,7 @@ function SyncItems() {
           }
         >
           <div style={{ display: "flex" }}>
-            <IconButton
+            <IconButton /* @uxid app/components/settings::SyncItems.iconbutton */
               aria={Locale.Settings.Sync.CloudState + Locale.UI.Config}
               icon={<ConfigIcon />}
               text={Locale.UI.Config}
@@ -532,7 +538,7 @@ function SyncItems() {
               }}
             />
             {couldSync && (
-              <IconButton
+              <IconButton /* @uxid app/components/settings::SyncItems.iconbutton-2 */
                 icon={<ResetIcon />}
                 text={Locale.UI.Sync}
                 onClick={async () => {
@@ -554,7 +560,7 @@ function SyncItems() {
           subTitle={Locale.Settings.Sync.Overview(stateOverview)}
         >
           <div style={{ display: "flex" }}>
-            <IconButton
+            <IconButton /* @uxid app/components/settings::SyncItems.iconbutton-3 */
               aria={Locale.Settings.Sync.LocalState + Locale.UI.Export}
               icon={<UploadIcon />}
               text={Locale.UI.Export}
@@ -562,7 +568,7 @@ function SyncItems() {
                 syncStore.export();
               }}
             />
-            <IconButton
+            <IconButton /* @uxid app/components/settings::SyncItems.iconbutton-4 */
               aria={Locale.Settings.Sync.LocalState + Locale.UI.Import}
               icon={<DownloadIcon />}
               text={Locale.UI.Import}
@@ -575,12 +581,13 @@ function SyncItems() {
       </List>
 
       {showSyncConfigModal && (
-        <SyncConfigModal onClose={() => setShowSyncConfigModal(false)} />
+        <SyncConfigModal /* @uxid app/components/settings::SyncItems.syncconfigmodal */ onClose={() => setShowSyncConfigModal(false)} />
       )}
     </>
   );
 }
 
+// @uxid app/components/settings::Settings
 export function Settings() {
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -681,7 +688,7 @@ export function Settings() {
       title={Locale.Settings.Access.AccessCode.Title}
       subTitle={Locale.Settings.Access.AccessCode.SubTitle}
     >
-      <PasswordInput
+      <PasswordInput /* @uxid app/components/settings::Settings.passwordinput */
         value={accessStore.accessCode}
         type="text"
         placeholder={Locale.Settings.Access.AccessCode.Placeholder}
@@ -703,7 +710,7 @@ export function Settings() {
       }
       subTitle={Locale.Settings.Access.SaasStart.SubTitle}
     >
-      <IconButton
+      <IconButton /* @uxid app/components/settings::Settings.iconbutton */
         aria={
           Locale.Settings.Access.SaasStart.Title +
           Locale.Settings.Access.SaasStart.ChatNow
@@ -725,7 +732,7 @@ export function Settings() {
         title={Locale.Settings.Access.CustomEndpoint.Title}
         subTitle={Locale.Settings.Access.CustomEndpoint.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.checkbox */
           aria-label={Locale.Settings.Access.CustomEndpoint.Title}
           type="checkbox"
           checked={accessStore.useCustomConfig}
@@ -745,7 +752,7 @@ export function Settings() {
         title={Locale.Settings.Access.OpenAI.Endpoint.Title}
         subTitle={Locale.Settings.Access.OpenAI.Endpoint.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input */
           aria-label={Locale.Settings.Access.OpenAI.Endpoint.Title}
           type="text"
           value={accessStore.openaiUrl}
@@ -761,7 +768,7 @@ export function Settings() {
         title={Locale.Settings.Access.OpenAI.ApiKey.Title}
         subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-2 */
           aria={Locale.Settings.ShowPassword}
           aria-label={Locale.Settings.Access.OpenAI.ApiKey.Title}
           value={accessStore.openaiApiKey}
@@ -786,7 +793,7 @@ export function Settings() {
           Locale.Settings.Access.Azure.Endpoint.SubTitle + Azure.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-2 */
           aria-label={Locale.Settings.Access.Azure.Endpoint.Title}
           type="text"
           value={accessStore.azureUrl}
@@ -802,7 +809,7 @@ export function Settings() {
         title={Locale.Settings.Access.Azure.ApiKey.Title}
         subTitle={Locale.Settings.Access.Azure.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-3 */
           aria-label={Locale.Settings.Access.Azure.ApiKey.Title}
           value={accessStore.azureApiKey}
           type="text"
@@ -818,7 +825,7 @@ export function Settings() {
         title={Locale.Settings.Access.Azure.ApiVerion.Title}
         subTitle={Locale.Settings.Access.Azure.ApiVerion.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-3 */
           aria-label={Locale.Settings.Access.Azure.ApiVerion.Title}
           type="text"
           value={accessStore.azureApiVersion}
@@ -843,7 +850,7 @@ export function Settings() {
           Google.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-4 */
           aria-label={Locale.Settings.Access.Google.Endpoint.Title}
           type="text"
           value={accessStore.googleUrl}
@@ -859,7 +866,7 @@ export function Settings() {
         title={Locale.Settings.Access.Google.ApiKey.Title}
         subTitle={Locale.Settings.Access.Google.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-4 */
           aria-label={Locale.Settings.Access.Google.ApiKey.Title}
           value={accessStore.googleApiKey}
           type="text"
@@ -875,7 +882,7 @@ export function Settings() {
         title={Locale.Settings.Access.Google.ApiVersion.Title}
         subTitle={Locale.Settings.Access.Google.ApiVersion.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-5 */
           aria-label={Locale.Settings.Access.Google.ApiVersion.Title}
           type="text"
           value={accessStore.googleApiVersion}
@@ -891,7 +898,7 @@ export function Settings() {
         title={Locale.Settings.Access.Google.GoogleSafetySettings.Title}
         subTitle={Locale.Settings.Access.Google.GoogleSafetySettings.SubTitle}
       >
-        <Select
+        <Select /* @uxid app/components/settings::Settings.select */
           aria-label={Locale.Settings.Access.Google.GoogleSafetySettings.Title}
           value={accessStore.googleSafetySettings}
           onChange={(e) => {
@@ -903,7 +910,7 @@ export function Settings() {
           }}
         >
           {Object.entries(GoogleSafetySettingsThreshold).map(([k, v]) => (
-            <option value={v} key={k}>
+            <option /* @uxid app/components/settings::Settings.option */ value={v} key={k}>
               {k}
             </option>
           ))}
@@ -922,7 +929,7 @@ export function Settings() {
           Anthropic.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-6 */
           aria-label={Locale.Settings.Access.Anthropic.Endpoint.Title}
           type="text"
           value={accessStore.anthropicUrl}
@@ -938,7 +945,7 @@ export function Settings() {
         title={Locale.Settings.Access.Anthropic.ApiKey.Title}
         subTitle={Locale.Settings.Access.Anthropic.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-5 */
           aria-label={Locale.Settings.Access.Anthropic.ApiKey.Title}
           value={accessStore.anthropicApiKey}
           type="text"
@@ -954,7 +961,7 @@ export function Settings() {
         title={Locale.Settings.Access.Anthropic.ApiVerion.Title}
         subTitle={Locale.Settings.Access.Anthropic.ApiVerion.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-7 */
           aria-label={Locale.Settings.Access.Anthropic.ApiVerion.Title}
           type="text"
           value={accessStore.anthropicApiVersion}
@@ -976,7 +983,7 @@ export function Settings() {
         title={Locale.Settings.Access.Baidu.Endpoint.Title}
         subTitle={Locale.Settings.Access.Baidu.Endpoint.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-8 */
           aria-label={Locale.Settings.Access.Baidu.Endpoint.Title}
           type="text"
           value={accessStore.baiduUrl}
@@ -992,7 +999,7 @@ export function Settings() {
         title={Locale.Settings.Access.Baidu.ApiKey.Title}
         subTitle={Locale.Settings.Access.Baidu.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-6 */
           aria-label={Locale.Settings.Access.Baidu.ApiKey.Title}
           value={accessStore.baiduApiKey}
           type="text"
@@ -1008,7 +1015,7 @@ export function Settings() {
         title={Locale.Settings.Access.Baidu.SecretKey.Title}
         subTitle={Locale.Settings.Access.Baidu.SecretKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-7 */
           aria-label={Locale.Settings.Access.Baidu.SecretKey.Title}
           value={accessStore.baiduSecretKey}
           type="text"
@@ -1030,7 +1037,7 @@ export function Settings() {
         title={Locale.Settings.Access.Tencent.Endpoint.Title}
         subTitle={Locale.Settings.Access.Tencent.Endpoint.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-9 */
           aria-label={Locale.Settings.Access.Tencent.Endpoint.Title}
           type="text"
           value={accessStore.tencentUrl}
@@ -1046,7 +1053,7 @@ export function Settings() {
         title={Locale.Settings.Access.Tencent.ApiKey.Title}
         subTitle={Locale.Settings.Access.Tencent.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-8 */
           aria-label={Locale.Settings.Access.Tencent.ApiKey.Title}
           value={accessStore.tencentSecretId}
           type="text"
@@ -1062,7 +1069,7 @@ export function Settings() {
         title={Locale.Settings.Access.Tencent.SecretKey.Title}
         subTitle={Locale.Settings.Access.Tencent.SecretKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-9 */
           aria-label={Locale.Settings.Access.Tencent.SecretKey.Title}
           value={accessStore.tencentSecretKey}
           type="text"
@@ -1087,7 +1094,7 @@ export function Settings() {
           ByteDance.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-10 */
           aria-label={Locale.Settings.Access.ByteDance.Endpoint.Title}
           type="text"
           value={accessStore.bytedanceUrl}
@@ -1103,7 +1110,7 @@ export function Settings() {
         title={Locale.Settings.Access.ByteDance.ApiKey.Title}
         subTitle={Locale.Settings.Access.ByteDance.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-10 */
           aria-label={Locale.Settings.Access.ByteDance.ApiKey.Title}
           value={accessStore.bytedanceApiKey}
           type="text"
@@ -1128,7 +1135,7 @@ export function Settings() {
           Alibaba.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-11 */
           aria-label={Locale.Settings.Access.Alibaba.Endpoint.Title}
           type="text"
           value={accessStore.alibabaUrl}
@@ -1144,7 +1151,7 @@ export function Settings() {
         title={Locale.Settings.Access.Alibaba.ApiKey.Title}
         subTitle={Locale.Settings.Access.Alibaba.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-11 */
           aria-label={Locale.Settings.Access.Alibaba.ApiKey.Title}
           value={accessStore.alibabaApiKey}
           type="text"
@@ -1169,7 +1176,7 @@ export function Settings() {
           Moonshot.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-12 */
           aria-label={Locale.Settings.Access.Moonshot.Endpoint.Title}
           type="text"
           value={accessStore.moonshotUrl}
@@ -1185,7 +1192,7 @@ export function Settings() {
         title={Locale.Settings.Access.Moonshot.ApiKey.Title}
         subTitle={Locale.Settings.Access.Moonshot.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-12 */
           aria-label={Locale.Settings.Access.Moonshot.ApiKey.Title}
           value={accessStore.moonshotApiKey}
           type="text"
@@ -1210,7 +1217,7 @@ export function Settings() {
           DeepSeek.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-13 */
           aria-label={Locale.Settings.Access.DeepSeek.Endpoint.Title}
           type="text"
           value={accessStore.deepseekUrl}
@@ -1226,7 +1233,7 @@ export function Settings() {
         title={Locale.Settings.Access.DeepSeek.ApiKey.Title}
         subTitle={Locale.Settings.Access.DeepSeek.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-13 */
           aria-label={Locale.Settings.Access.DeepSeek.ApiKey.Title}
           value={accessStore.deepseekApiKey}
           type="text"
@@ -1249,7 +1256,7 @@ export function Settings() {
           Locale.Settings.Access.XAI.Endpoint.SubTitle + XAI.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-14 */
           aria-label={Locale.Settings.Access.XAI.Endpoint.Title}
           type="text"
           value={accessStore.xaiUrl}
@@ -1265,7 +1272,7 @@ export function Settings() {
         title={Locale.Settings.Access.XAI.ApiKey.Title}
         subTitle={Locale.Settings.Access.XAI.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-14 */
           aria-label={Locale.Settings.Access.XAI.ApiKey.Title}
           value={accessStore.xaiApiKey}
           type="text"
@@ -1290,7 +1297,7 @@ export function Settings() {
           ChatGLM.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-15 */
           aria-label={Locale.Settings.Access.ChatGLM.Endpoint.Title}
           type="text"
           value={accessStore.chatglmUrl}
@@ -1306,7 +1313,7 @@ export function Settings() {
         title={Locale.Settings.Access.ChatGLM.ApiKey.Title}
         subTitle={Locale.Settings.Access.ChatGLM.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-15 */
           aria-label={Locale.Settings.Access.ChatGLM.ApiKey.Title}
           value={accessStore.chatglmApiKey}
           type="text"
@@ -1330,7 +1337,7 @@ export function Settings() {
           SiliconFlow.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-16 */
           aria-label={Locale.Settings.Access.SiliconFlow.Endpoint.Title}
           type="text"
           value={accessStore.siliconflowUrl}
@@ -1346,7 +1353,7 @@ export function Settings() {
         title={Locale.Settings.Access.SiliconFlow.ApiKey.Title}
         subTitle={Locale.Settings.Access.SiliconFlow.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-16 */
           aria-label={Locale.Settings.Access.SiliconFlow.ApiKey.Title}
           value={accessStore.siliconflowApiKey}
           type="text"
@@ -1371,7 +1378,7 @@ export function Settings() {
           Stability.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-17 */
           aria-label={Locale.Settings.Access.Stability.Endpoint.Title}
           type="text"
           value={accessStore.stabilityUrl}
@@ -1387,7 +1394,7 @@ export function Settings() {
         title={Locale.Settings.Access.Stability.ApiKey.Title}
         subTitle={Locale.Settings.Access.Stability.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-17 */
           aria-label={Locale.Settings.Access.Stability.ApiKey.Title}
           value={accessStore.stabilityApiKey}
           type="text"
@@ -1411,7 +1418,7 @@ export function Settings() {
           Iflytek.ExampleEndpoint
         }
       >
-        <input
+        <input /* @uxid app/components/settings::Settings.input-18 */
           aria-label={Locale.Settings.Access.Iflytek.Endpoint.Title}
           type="text"
           value={accessStore.iflytekUrl}
@@ -1427,7 +1434,7 @@ export function Settings() {
         title={Locale.Settings.Access.Iflytek.ApiKey.Title}
         subTitle={Locale.Settings.Access.Iflytek.ApiKey.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-18 */
           aria-label={Locale.Settings.Access.Iflytek.ApiKey.Title}
           value={accessStore.iflytekApiKey}
           type="text"
@@ -1444,7 +1451,7 @@ export function Settings() {
         title={Locale.Settings.Access.Iflytek.ApiSecret.Title}
         subTitle={Locale.Settings.Access.Iflytek.ApiSecret.SubTitle}
       >
-        <PasswordInput
+        <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-19 */
           aria-label={Locale.Settings.Access.Iflytek.ApiSecret.Title}
           value={accessStore.iflytekApiSecret}
           type="text"
@@ -1468,7 +1475,7 @@ export function Settings() {
             AI302.ExampleEndpoint
           }
         >
-          <input
+          <input /* @uxid app/components/settings::Settings.input-19 */
             aria-label={Locale.Settings.Access.AI302.Endpoint.Title}
             type="text"
             value={accessStore.ai302Url}
@@ -1484,7 +1491,7 @@ export function Settings() {
           title={Locale.Settings.Access.AI302.ApiKey.Title}
           subTitle={Locale.Settings.Access.AI302.ApiKey.SubTitle}
         >
-          <PasswordInput
+          <PasswordInput /* @uxid app/components/settings::Settings.passwordinput-20 */
             aria-label={Locale.Settings.Access.AI302.ApiKey.Title}
             value={accessStore.ai302ApiKey}
             type="text"
@@ -1514,7 +1521,7 @@ export function Settings() {
           <div className="window-action-button"></div>
           <div className="window-action-button"></div>
           <div className="window-action-button">
-            <IconButton
+            <IconButton /* @uxid app/components/settings::Settings.iconbutton-2 */
               aria={Locale.UI.Close}
               icon={<CloseIcon />}
               onClick={() => navigate(Path.Home)}
@@ -1526,10 +1533,10 @@ export function Settings() {
       <div className={styles["settings"]}>
         <List>
           <ListItem title={Locale.Settings.Avatar}>
-            <Popover
+            <Popover /* @uxid app/components/settings::Settings.popover */
               onClose={() => setShowEmojiPicker(false)}
               content={
-                <AvatarPicker
+                <AvatarPicker /* @uxid app/components/settings::Settings.avatarpicker */
                   onEmojiClick={(avatar: string) => {
                     updateConfig((config) => (config.avatar = avatar));
                     setShowEmojiPicker(false);
@@ -1538,7 +1545,7 @@ export function Settings() {
               }
               open={showEmojiPicker}
             >
-              <div
+              <div /* @uxid app/components/settings::Settings.div */
                 aria-label={Locale.Settings.Avatar}
                 tabIndex={0}
                 className={styles.avatar}
@@ -1565,18 +1572,18 @@ export function Settings() {
               <LoadingIcon />
             ) : hasNewVersion ? (
               clientConfig?.isApp ? (
-                <IconButton
+                <IconButton /* @uxid app/components/settings::Settings.iconbutton-3 */
                   icon={<ResetIcon></ResetIcon>}
                   text={Locale.Settings.Update.GoToUpdate}
                   onClick={() => clientUpdate()}
                 />
               ) : (
-                <Link href={updateUrl} target="_blank" className="link">
+                <Link /* @uxid app/components/settings::Settings.link */ href={updateUrl} target="_blank" className="link">
                   {Locale.Settings.Update.GoToUpdate}
                 </Link>
               )
             ) : (
-              <IconButton
+              <IconButton /* @uxid app/components/settings::Settings.iconbutton-4 */
                 icon={<ResetIcon></ResetIcon>}
                 text={Locale.Settings.Update.CheckUpdate}
                 onClick={() => checkUpdate(true)}
@@ -1585,7 +1592,7 @@ export function Settings() {
           </ListItem>
 
           <ListItem title={Locale.Settings.SendKey}>
-            <Select
+            <Select /* @uxid app/components/settings::Settings.select-2 */
               aria-label={Locale.Settings.SendKey}
               value={config.submitKey}
               onChange={(e) => {
@@ -1596,7 +1603,7 @@ export function Settings() {
               }}
             >
               {Object.values(SubmitKey).map((v) => (
-                <option value={v} key={v}>
+                <option /* @uxid app/components/settings::Settings.option-2 */ value={v} key={v}>
                   {v}
                 </option>
               ))}
@@ -1604,7 +1611,7 @@ export function Settings() {
           </ListItem>
 
           <ListItem title={Locale.Settings.Theme}>
-            <Select
+            <Select /* @uxid app/components/settings::Settings.select-3 */
               aria-label={Locale.Settings.Theme}
               value={config.theme}
               onChange={(e) => {
@@ -1614,7 +1621,7 @@ export function Settings() {
               }}
             >
               {Object.values(Theme).map((v) => (
-                <option value={v} key={v}>
+                <option /* @uxid app/components/settings::Settings.option-3 */ value={v} key={v}>
                   {v}
                 </option>
               ))}
@@ -1622,7 +1629,7 @@ export function Settings() {
           </ListItem>
 
           <ListItem title={Locale.Settings.Lang.Name}>
-            <Select
+            <Select /* @uxid app/components/settings::Settings.select-4 */
               aria-label={Locale.Settings.Lang.Name}
               value={getLang()}
               onChange={(e) => {
@@ -1630,7 +1637,7 @@ export function Settings() {
               }}
             >
               {AllLangs.map((lang) => (
-                <option value={lang} key={lang}>
+                <option /* @uxid app/components/settings::Settings.option-4 */ value={lang} key={lang}>
                   {ALL_LANG_OPTIONS[lang]}
                 </option>
               ))}
@@ -1641,7 +1648,7 @@ export function Settings() {
             title={Locale.Settings.FontSize.Title}
             subTitle={Locale.Settings.FontSize.SubTitle}
           >
-            <InputRange
+            <InputRange /* @uxid app/components/settings::Settings.inputrange */
               aria={Locale.Settings.FontSize.Title}
               title={`${config.fontSize ?? 14}px`}
               value={config.fontSize}
@@ -1661,7 +1668,7 @@ export function Settings() {
             title={Locale.Settings.FontFamily.Title}
             subTitle={Locale.Settings.FontFamily.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.input-20 */
               aria-label={Locale.Settings.FontFamily.Title}
               type="text"
               value={config.fontFamily}
@@ -1678,7 +1685,7 @@ export function Settings() {
             title={Locale.Settings.AutoGenerateTitle.Title}
             subTitle={Locale.Settings.AutoGenerateTitle.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-2 */
               aria-label={Locale.Settings.AutoGenerateTitle.Title}
               type="checkbox"
               checked={config.enableAutoGenerateTitle}
@@ -1695,7 +1702,7 @@ export function Settings() {
             title={Locale.Settings.SendPreviewBubble.Title}
             subTitle={Locale.Settings.SendPreviewBubble.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-3 */
               aria-label={Locale.Settings.SendPreviewBubble.Title}
               type="checkbox"
               checked={config.sendPreviewBubble}
@@ -1712,7 +1719,7 @@ export function Settings() {
             title={Locale.Mask.Config.Artifacts.Title}
             subTitle={Locale.Mask.Config.Artifacts.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-4 */
               aria-label={Locale.Mask.Config.Artifacts.Title}
               type="checkbox"
               checked={config.enableArtifacts}
@@ -1728,7 +1735,7 @@ export function Settings() {
             title={Locale.Mask.Config.CodeFold.Title}
             subTitle={Locale.Mask.Config.CodeFold.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-5 */
               aria-label={Locale.Mask.Config.CodeFold.Title}
               type="checkbox"
               checked={config.enableCodeFold}
@@ -1749,7 +1756,7 @@ export function Settings() {
             title={Locale.Settings.Mask.Splash.Title}
             subTitle={Locale.Settings.Mask.Splash.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-6 */
               aria-label={Locale.Settings.Mask.Splash.Title}
               type="checkbox"
               checked={!config.dontShowMaskSplashScreen}
@@ -1767,7 +1774,7 @@ export function Settings() {
             title={Locale.Settings.Mask.Builtin.Title}
             subTitle={Locale.Settings.Mask.Builtin.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-7 */
               aria-label={Locale.Settings.Mask.Builtin.Title}
               type="checkbox"
               checked={config.hideBuiltinMasks}
@@ -1786,7 +1793,7 @@ export function Settings() {
             title={Locale.Settings.Prompt.Disable.Title}
             subTitle={Locale.Settings.Prompt.Disable.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.checkbox-8 */
               aria-label={Locale.Settings.Prompt.Disable.Title}
               type="checkbox"
               checked={config.disablePromptHint}
@@ -1806,7 +1813,7 @@ export function Settings() {
               customCount,
             )}
           >
-            <IconButton
+            <IconButton /* @uxid app/components/settings::Settings.iconbutton-5 */
               aria={Locale.Settings.Prompt.List + Locale.Settings.Prompt.Edit}
               icon={<EditIcon />}
               text={Locale.Settings.Prompt.Edit}
@@ -1829,7 +1836,7 @@ export function Settings() {
                     title={Locale.Settings.Access.Provider.Title}
                     subTitle={Locale.Settings.Access.Provider.SubTitle}
                   >
-                    <Select
+                    <Select /* @uxid app/components/settings::Settings.select-5 */
                       aria-label={Locale.Settings.Access.Provider.Title}
                       value={accessStore.provider}
                       onChange={(e) => {
@@ -1841,7 +1848,7 @@ export function Settings() {
                       }}
                     >
                       {Object.entries(ServiceProvider).map(([k, v]) => (
-                        <option value={v} key={k}>
+                        <option /* @uxid app/components/settings::Settings.option-5 */ value={v} key={k}>
                           {k}
                         </option>
                       ))}
@@ -1886,7 +1893,7 @@ export function Settings() {
               {!showUsage || loadingUsage ? (
                 <div />
               ) : (
-                <IconButton
+                <IconButton /* @uxid app/components/settings::Settings.iconbutton-6 */
                   icon={<ResetIcon></ResetIcon>}
                   text={Locale.Settings.Usage.Check}
                   onClick={() => checkUsage(true)}
@@ -1900,7 +1907,7 @@ export function Settings() {
             subTitle={Locale.Settings.Access.CustomModel.SubTitle}
             vertical={true}
           >
-            <input
+            <input /* @uxid app/components/settings::Settings.input-21 */
               aria-label={Locale.Settings.Access.CustomModel.Title}
               style={{ width: "100%", maxWidth: "unset", textAlign: "left" }}
               type="text"
@@ -1927,7 +1934,7 @@ export function Settings() {
         </List>
 
         {shouldShowPromptModal && (
-          <UserPromptModal onClose={() => setShowPromptModal(false)} />
+          <UserPromptModal /* @uxid app/components/settings::Settings.userpromptmodal */ onClose={() => setShowPromptModal(false)} />
         )}
         <List>
           <RealtimeConfigList

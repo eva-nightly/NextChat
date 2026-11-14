@@ -9,6 +9,7 @@ import { groupBy } from "lodash-es";
 import styles from "./model-config.module.scss";
 import { getModelProvider } from "../utils/model";
 
+// @uxid app/components/model-config::ModelConfigList
 export function ModelConfigList(props: {
   modelConfig: ModelConfig;
   updateConfig: (updater: (config: ModelConfig) => void) => void;
@@ -24,7 +25,7 @@ export function ModelConfigList(props: {
   return (
     <>
       <ListItem title={Locale.Settings.Model}>
-        <Select
+        <Select /* @uxid app/components/model-config::ModelConfigList.select */
           aria-label={Locale.Settings.Model}
           value={value}
           align="left"
@@ -39,9 +40,9 @@ export function ModelConfigList(props: {
           }}
         >
           {Object.keys(groupModels).map((providerName, index) => (
-            <optgroup label={providerName} key={index}>
+            <optgroup /* @uxid app/components/model-config::ModelConfigList.optgroup */ label={providerName} key={index}>
               {groupModels[providerName].map((v, i) => (
-                <option value={`${v.name}@${v.provider?.providerName}`} key={i}>
+                <option /* @uxid app/components/model-config::ModelConfigList.option */ value={`${v.name}@${v.provider?.providerName}`} key={i}>
                   {v.displayName}
                 </option>
               ))}
@@ -53,7 +54,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.Temperature.Title}
         subTitle={Locale.Settings.Temperature.SubTitle}
       >
-        <InputRange
+        <InputRange /* @uxid app/components/model-config::ModelConfigList.inputrange */
           aria={Locale.Settings.Temperature.Title}
           value={props.modelConfig.temperature?.toFixed(1)}
           min="0"
@@ -73,7 +74,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.TopP.Title}
         subTitle={Locale.Settings.TopP.SubTitle}
       >
-        <InputRange
+        <InputRange /* @uxid app/components/model-config::ModelConfigList.inputrange-2 */
           aria={Locale.Settings.TopP.Title}
           value={(props.modelConfig.top_p ?? 1).toFixed(1)}
           min="0"
@@ -93,7 +94,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.MaxTokens.Title}
         subTitle={Locale.Settings.MaxTokens.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/model-config::ModelConfigList.number */
           aria-label={Locale.Settings.MaxTokens.Title}
           type="number"
           min={1024}
@@ -116,7 +117,7 @@ export function ModelConfigList(props: {
             title={Locale.Settings.PresencePenalty.Title}
             subTitle={Locale.Settings.PresencePenalty.SubTitle}
           >
-            <InputRange
+            <InputRange /* @uxid app/components/model-config::ModelConfigList.inputrange-3 */
               aria={Locale.Settings.PresencePenalty.Title}
               value={props.modelConfig.presence_penalty?.toFixed(1)}
               min="-2"
@@ -138,7 +139,7 @@ export function ModelConfigList(props: {
             title={Locale.Settings.FrequencyPenalty.Title}
             subTitle={Locale.Settings.FrequencyPenalty.SubTitle}
           >
-            <InputRange
+            <InputRange /* @uxid app/components/model-config::ModelConfigList.inputrange-4 */
               aria={Locale.Settings.FrequencyPenalty.Title}
               value={props.modelConfig.frequency_penalty?.toFixed(1)}
               min="-2"
@@ -160,7 +161,7 @@ export function ModelConfigList(props: {
             title={Locale.Settings.InjectSystemPrompts.Title}
             subTitle={Locale.Settings.InjectSystemPrompts.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/model-config::ModelConfigList.checkbox */
               aria-label={Locale.Settings.InjectSystemPrompts.Title}
               type="checkbox"
               checked={props.modelConfig.enableInjectSystemPrompts}
@@ -178,7 +179,7 @@ export function ModelConfigList(props: {
             title={Locale.Settings.InputTemplate.Title}
             subTitle={Locale.Settings.InputTemplate.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/model-config::ModelConfigList.input */
               aria-label={Locale.Settings.InputTemplate.Title}
               type="text"
               value={props.modelConfig.template}
@@ -195,7 +196,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.HistoryCount.Title}
         subTitle={Locale.Settings.HistoryCount.SubTitle}
       >
-        <InputRange
+        <InputRange /* @uxid app/components/model-config::ModelConfigList.inputrange-5 */
           aria={Locale.Settings.HistoryCount.Title}
           title={props.modelConfig.historyMessageCount.toString()}
           value={props.modelConfig.historyMessageCount}
@@ -214,7 +215,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.CompressThreshold.Title}
         subTitle={Locale.Settings.CompressThreshold.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/model-config::ModelConfigList.number-2 */
           aria-label={Locale.Settings.CompressThreshold.Title}
           type="number"
           min={500}
@@ -230,7 +231,7 @@ export function ModelConfigList(props: {
         ></input>
       </ListItem>
       <ListItem title={Locale.Memory.Title} subTitle={Locale.Memory.Send}>
-        <input
+        <input /* @uxid app/components/model-config::ModelConfigList.checkbox-2 */
           aria-label={Locale.Memory.Title}
           type="checkbox"
           checked={props.modelConfig.sendMemory}
@@ -245,7 +246,7 @@ export function ModelConfigList(props: {
         title={Locale.Settings.CompressModel.Title}
         subTitle={Locale.Settings.CompressModel.SubTitle}
       >
-        <Select
+        <Select /* @uxid app/components/model-config::ModelConfigList.select-2 */
           className={styles["select-compress-model"]}
           aria-label={Locale.Settings.CompressModel.Title}
           value={compressModelValue}
@@ -262,7 +263,7 @@ export function ModelConfigList(props: {
           {allModels
             .filter((v) => v.available)
             .map((v, i) => (
-              <option value={`${v.name}@${v.provider?.providerName}`} key={i}>
+              <option /* @uxid app/components/model-config::ModelConfigList.option-2 */ value={`${v.name}@${v.provider?.providerName}`} key={i}>
                 {v.displayName}({v.provider?.providerName})
               </option>
             ))}

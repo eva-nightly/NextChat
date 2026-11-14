@@ -45,10 +45,11 @@ const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
 });
 
+// @uxid app/components/exporter::ExportMessageModal
 export function ExportMessageModal(props: { onClose: () => void }) {
   return (
     <div className="modal-mask">
-      <Modal
+      <Modal /* @uxid app/components/exporter::ExportMessageModal.modal */
         title={Locale.Export.Title}
         onClose={props.onClose}
         footer={
@@ -94,6 +95,7 @@ function useSteps(
   };
 }
 
+// @uxid app/components/exporter::Steps
 function Steps<
   T extends {
     name: string;
@@ -116,7 +118,7 @@ function Steps<
       <div className={styles["steps-inner"]}>
         {steps.map((step, i) => {
           return (
-            <div
+            <div /* @uxid app/components/exporter::Steps.div */
               key={i}
               className={clsx("clickable", styles["step"], {
                 [styles["step-finished"]]: i <= props.index,
@@ -137,6 +139,7 @@ function Steps<
   );
 }
 
+// @uxid app/components/exporter::MessageExporter
 export function MessageExporter() {
   const steps = [
     {
@@ -197,7 +200,7 @@ export function MessageExporter() {
   }
   return (
     <>
-      <Steps
+      <Steps /* @uxid app/components/exporter::MessageExporter.steps */
         steps={steps}
         index={currentStepIndex}
         onStepChange={setCurrentStepIndex}
@@ -211,7 +214,7 @@ export function MessageExporter() {
             title={Locale.Export.Format.Title}
             subTitle={Locale.Export.Format.SubTitle}
           >
-            <Select
+            <Select /* @uxid app/components/exporter::MessageExporter.select */
               value={exportConfig.format}
               onChange={(e) =>
                 updateExportConfig(
@@ -221,7 +224,7 @@ export function MessageExporter() {
               }
             >
               {formats.map((f) => (
-                <option key={f} value={f}>
+                <option /* @uxid app/components/exporter::MessageExporter.option */ key={f} value={f}>
                   {f}
                 </option>
               ))}
@@ -231,7 +234,7 @@ export function MessageExporter() {
             title={Locale.Export.IncludeContext.Title}
             subTitle={Locale.Export.IncludeContext.SubTitle}
           >
-            <input
+            <input /* @uxid app/components/exporter::MessageExporter.checkbox */
               type="checkbox"
               checked={exportConfig.includeContext}
               onChange={(e) => {
@@ -255,6 +258,7 @@ export function MessageExporter() {
   );
 }
 
+// @uxid app/components/exporter::RenderExport
 export function RenderExport(props: {
   messages: ChatMessage[];
   onRender: (messages: ChatMessage[]) => void;
@@ -301,6 +305,7 @@ export function RenderExport(props: {
   );
 }
 
+// @uxid app/components/exporter::PreviewActions
 export function PreviewActions(props: {
   download: () => void;
   copy: () => void;
@@ -322,7 +327,7 @@ export function PreviewActions(props: {
         showModal({
           title: Locale.Export.Share,
           children: [
-            <input
+            <input /* @uxid app/components/exporter::PreviewActions.input */
               type="text"
               value={res}
               key="input"
@@ -335,7 +340,7 @@ export function PreviewActions(props: {
             ></input>,
           ],
           actions: [
-            <IconButton
+            <IconButton /* @uxid app/components/exporter::PreviewActions.iconbutton */
               icon={<CopyIcon />}
               text={Locale.Chat.Actions.Copy}
               key="copy"
@@ -365,7 +370,7 @@ export function PreviewActions(props: {
     <>
       <div className={styles["preview-actions"]}>
         {props.showCopy && (
-          <IconButton
+          <IconButton /* @uxid app/components/exporter::PreviewActions.iconbutton-2 */
             text={Locale.Export.Copy}
             bordered
             shadow
@@ -373,14 +378,14 @@ export function PreviewActions(props: {
             onClick={props.copy}
           ></IconButton>
         )}
-        <IconButton
+        <IconButton /* @uxid app/components/exporter::PreviewActions.iconbutton-3 */
           text={Locale.Export.Download}
           bordered
           shadow
           icon={<DownloadIcon />}
           onClick={props.download}
         ></IconButton>
-        <IconButton
+        <IconButton /* @uxid app/components/exporter::PreviewActions.iconbutton-4 */
           text={Locale.Export.Share}
           bordered
           shadow
@@ -396,7 +401,7 @@ export function PreviewActions(props: {
         }}
       >
         {shouldExport && (
-          <RenderExport
+          <RenderExport /* @uxid app/components/exporter::PreviewActions.renderexport */
             messages={props.messages ?? []}
             onRender={onRenderMsgs}
           />
@@ -406,6 +411,7 @@ export function PreviewActions(props: {
   );
 }
 
+// @uxid app/components/exporter::ImagePreviewer
 export function ImagePreviewer(props: {
   messages: ChatMessage[];
   topic: string;
@@ -615,6 +621,7 @@ export function ImagePreviewer(props: {
   );
 }
 
+// @uxid app/components/exporter::MarkdownPreviewer
 export function MarkdownPreviewer(props: {
   messages: ChatMessage[];
   topic: string;
@@ -652,6 +659,7 @@ export function MarkdownPreviewer(props: {
   );
 }
 
+// @uxid app/components/exporter::JsonPreviewer
 export function JsonPreviewer(props: {
   messages: ChatMessage[];
   topic: string;
@@ -686,7 +694,7 @@ export function JsonPreviewer(props: {
         showCopy={false}
         messages={props.messages}
       />
-      <div className="markdown-body" onClick={copy}>
+      <div /* @uxid app/components/exporter::JsonPreviewer.div */ className="markdown-body" onClick={copy}>
         <Markdown content={mdText} />
       </div>
     </>

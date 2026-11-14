@@ -22,6 +22,7 @@ import clsx from "clsx";
 
 const storage = safeLocalStorage();
 
+// @uxid app/components/auth::AuthPage
 export function AuthPage() {
   const navigate = useNavigate();
   const accessStore = useAccessStore();
@@ -50,7 +51,7 @@ export function AuthPage() {
     <div className={styles["auth-page"]}>
       <TopBanner></TopBanner>
       <div className={styles["auth-header"]}>
-        <IconButton
+        <IconButton /* @uxid app/components/auth::AuthPage.iconbutton */
           icon={<LeftIcon />}
           text={Locale.Auth.Return}
           onClick={() => navigate(Path.Home)}
@@ -63,7 +64,7 @@ export function AuthPage() {
       <div className={styles["auth-title"]}>{Locale.Auth.Title}</div>
       <div className={styles["auth-tips"]}>{Locale.Auth.Tips}</div>
 
-      <PasswordInput
+      <PasswordInput /* @uxid app/components/auth::AuthPage.passwordinput */
         style={{ marginTop: "3vh", marginBottom: "3vh" }}
         aria={Locale.Settings.ShowPassword}
         aria-label={Locale.Auth.Input}
@@ -80,7 +81,7 @@ export function AuthPage() {
       {!accessStore.hideUserApiKey ? (
         <>
           <div className={styles["auth-tips"]}>{Locale.Auth.SubTips}</div>
-          <PasswordInput
+          <PasswordInput /* @uxid app/components/auth::AuthPage.passwordinput-2 */
             style={{ marginTop: "3vh", marginBottom: "3vh" }}
             aria={Locale.Settings.ShowPassword}
             aria-label={Locale.Settings.Access.OpenAI.ApiKey.Placeholder}
@@ -93,7 +94,7 @@ export function AuthPage() {
               );
             }}
           />
-          <PasswordInput
+          <PasswordInput /* @uxid app/components/auth::AuthPage.passwordinput-3 */
             style={{ marginTop: "3vh", marginBottom: "3vh" }}
             aria={Locale.Settings.ShowPassword}
             aria-label={Locale.Settings.Access.Google.ApiKey.Placeholder}
@@ -110,12 +111,12 @@ export function AuthPage() {
       ) : null}
 
       <div className={styles["auth-actions"]}>
-        <IconButton
+        <IconButton /* @uxid app/components/auth::AuthPage.iconbutton-2 */
           text={Locale.Auth.Confirm}
           type="primary"
           onClick={goChat}
         />
-        <IconButton
+        <IconButton /* @uxid app/components/auth::AuthPage.iconbutton-3 */
           text={Locale.Auth.SaasTips}
           onClick={() => {
             goSaas();
@@ -126,6 +127,7 @@ export function AuthPage() {
   );
 }
 
+// @uxid app/components/auth::TopBanner
 function TopBanner() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -160,7 +162,7 @@ function TopBanner() {
     return null;
   }
   return (
-    <div
+    <div /* @uxid app/components/auth::TopBanner.div */
       className={styles["top-banner"]}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -169,7 +171,7 @@ function TopBanner() {
         <Logo className={styles["top-banner-logo"]}></Logo>
         <span>
           {Locale.Auth.TopTips}
-          <a
+          <a /* @uxid app/components/auth::TopBanner.link */
             href={SAAS_CHAT_URL}
             rel="stylesheet"
             onClick={() => {
@@ -182,7 +184,7 @@ function TopBanner() {
         </span>
       </div>
       {(isHovered || isMobile) && (
-        <Delete className={styles["top-banner-close"]} onClick={handleClose} />
+        <Delete /* @uxid app/components/auth::TopBanner.delete */ className={styles["top-banner-close"]} onClick={handleClose} />
       )}
     </div>
   );

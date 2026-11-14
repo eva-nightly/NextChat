@@ -287,6 +287,7 @@ export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lan
 // Latex inline: $x^2$
 // Latex block: $$e=mc^2$$
 // `;
+// @uxid app/constant::DEFAULT_SYSTEM_TEMPLATE
 export const DEFAULT_SYSTEM_TEMPLATE = `
 You are a helpful AI assistant powered by a large language model from {{ServiceProvider}}.
 Knowledge cutoff: {{cutoff}}
@@ -303,6 +304,7 @@ export const MCP_TOOLS_TEMPLATE = `
 {{ tools }}
 `;
 
+// @uxid app/constant::MCP_SYSTEM_TEMPLATE
 export const MCP_SYSTEM_TEMPLATE = `
 You are an AI assistant with access to system tools. Your role is to help users by combining natural language understanding with tool operations when needed.
 

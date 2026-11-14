@@ -2,6 +2,7 @@ import md5 from "spark-md5";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSideConfig } from "@/app/config/server";
 
+// @uxid app/api/artifacts/route::handle
 async function handle(req: NextRequest, res: NextResponse) {
   const serverConfig = getServerSideConfig();
   const storeUrl = () =>
