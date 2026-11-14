@@ -1,0 +1,770 @@
+{
+  "sections": [
+    {
+      "key": "home",
+      "label": "Home"
+    },
+    {
+      "key": "artifacts",
+      "label": "Artifacts"
+    }
+  ],
+  "sectionsFrom": "routes",
+  "navigation": null,
+  "pages": [
+    {
+      "id": "/",
+      "label": "Home",
+      "section": "home",
+      "file": "app/page.tsx",
+      "groups": [
+        "app",
+        "app/api/[provider]",
+        "app/client",
+        "app/components",
+        "app/components/realtime-chat",
+        "app/components/sd",
+        "app/mcp",
+        "app/store",
+        "app/utils/cloud"
+      ],
+      "tables": {},
+      "components": [
+        "app/components/artifacts::Artifacts",
+        "app/components/artifacts::ArtifactsShareButton",
+        "app/components/artifacts::HTMLPreview",
+        "app/components/auth::AuthPage",
+        "app/components/auth::TopBanner",
+        "app/components/button::IconButton",
+        "app/components/chat-list::ChatItem",
+        "app/components/chat-list::ChatList",
+        "app/components/chat::Chat",
+        "app/components/chat::ChatAction",
+        "app/components/emoji::Avatar",
+        "app/components/emoji::AvatarPicker",
+        "app/components/emoji::EmojiAvatar",
+        "app/components/error::ErrorBoundary",
+        "app/components/home::Home",
+        "app/components/home::Loading",
+        "app/components/home::Screen",
+        "app/components/home::WindowContent",
+        "app/components/input-range::InputRange",
+        "app/components/mask::ContextPromptItem",
+        "app/components/mask::ContextPrompts",
+        "app/components/mask::MaskAvatar",
+        "app/components/mask::MaskConfig",
+        "app/components/mask::MaskPage",
+        "app/components/mcp-market::McpMarketPage",
+        "app/components/model-config::ModelConfigList",
+        "app/components/new-chat::MaskItem",
+        "app/components/new-chat::NewChat",
+        "app/components/plugin::PluginPage",
+        "app/components/realtime-chat/realtime-config::RealtimeConfigList",
+        "app/components/sd/sd-panel::ControlParam",
+        "app/components/sd/sd-panel::ControlParamItem",
+        "app/components/sd/sd-panel::SdPanel",
+        "app/components/sd/sd-sidebar::SideBar",
+        "app/components/sd/sd::Sd",
+        "app/components/settings::CheckButton",
+        "app/components/settings::DangerItems",
+        "app/components/settings::EditPromptModal",
+        "app/components/settings::Settings",
+        "app/components/settings::SyncConfigModal",
+        "app/components/settings::SyncItems",
+        "app/components/settings::UserPromptModal",
+        "app/components/sidebar::SideBar",
+        "app/components/sidebar::SideBarBody",
+        "app/components/sidebar::SideBarContainer",
+        "app/components/sidebar::SideBarHeader",
+        "app/components/sidebar::SideBarTail",
+        "app/components/tts-config::TTSConfigList",
+        "app/components/ui-lib::Input",
+        "app/components/ui-lib::List",
+        "app/components/ui-lib::ListItem",
+        "app/components/ui-lib::Modal",
+        "app/components/ui-lib::PasswordInput",
+        "app/components/ui-lib::Popover",
+        "app/components/ui-lib::Select",
+        "app/components/ui-lib::Selector",
+        "app/layout::RootLayout",
+        "app/page::App"
+      ]
+    },
+    {
+      "id": "/artifacts/*",
+      "label": "*",
+      "section": "artifacts",
+      "file": "app/components/artifacts.tsx",
+      "groups": [
+        "app",
+        "app/api/[provider]",
+        "app/client",
+        "app/components",
+        "app/components/realtime-chat",
+        "app/components/sd",
+        "app/mcp",
+        "app/store",
+        "app/utils/cloud"
+      ],
+      "tables": {},
+      "components": [
+        "app/components/artifacts::Artifacts",
+        "app/components/artifacts::ArtifactsShareButton",
+        "app/components/artifacts::HTMLPreview",
+        "app/components/button::IconButton",
+        "app/components/ui-lib::Modal"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "GET /api/[provider]/[...path]",
+      "method": "GET",
+      "path": "/api/[provider]/[...path]",
+      "file": "app/api/[provider]/[...path]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/[provider]",
+      "section": "artifacts"
+    },
+    {
+      "id": "POST /api/[provider]/[...path]",
+      "method": "POST",
+      "path": "/api/[provider]/[...path]",
+      "file": "app/api/[provider]/[...path]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/[provider]",
+      "section": "artifacts"
+    },
+    {
+      "id": "POST /api/artifacts",
+      "method": "POST",
+      "path": "/api/artifacts",
+      "file": "app/api/artifacts/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/artifacts",
+      "section": "artifacts"
+    },
+    {
+      "id": "GET /api/artifacts",
+      "method": "GET",
+      "path": "/api/artifacts",
+      "file": "app/api/artifacts/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/artifacts",
+      "section": "artifacts"
+    },
+    {
+      "id": "GET /api/config",
+      "method": "GET",
+      "path": "/api/config",
+      "file": "app/api/config/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/config",
+      "section": "artifacts"
+    },
+    {
+      "id": "POST /api/config",
+      "method": "POST",
+      "path": "/api/config",
+      "file": "app/api/config/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/config",
+      "section": "artifacts"
+    },
+    {
+      "id": "GET /api/tencent",
+      "method": "GET",
+      "path": "/api/tencent",
+      "file": "app/api/tencent/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/tencent",
+      "section": "artifacts"
+    },
+    {
+      "id": "POST /api/tencent",
+      "method": "POST",
+      "path": "/api/tencent",
+      "file": "app/api/tencent/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/tencent",
+      "section": "artifacts"
+    },
+    {
+      "id": "POST /api/upstash/[action]/[...key]",
+      "method": "POST",
+      "path": "/api/upstash/[action]/[...key]",
+      "file": "app/api/upstash/[action]/[...key]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/upstash",
+      "section": "artifacts"
+    },
+    {
+      "id": "GET /api/upstash/[action]/[...key]",
+      "method": "GET",
+      "path": "/api/upstash/[action]/[...key]",
+      "file": "app/api/upstash/[action]/[...key]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/upstash",
+      "section": "artifacts"
+    },
+    {
+      "id": "PUT /api/webdav/[...path]",
+      "method": "PUT",
+      "path": "/api/webdav/[...path]",
+      "file": "app/api/webdav/[...path]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/webdav",
+      "section": "artifacts"
+    },
+    {
+      "id": "GET /api/webdav/[...path]",
+      "method": "GET",
+      "path": "/api/webdav/[...path]",
+      "file": "app/api/webdav/[...path]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "group": "app/api/webdav",
+      "section": "artifacts"
+    }
+  ],
+  "groups": [
+    {
+      "id": "app",
+      "label": "app",
+      "section": "home",
+      "files": 7,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]",
+        "app/api/artifacts",
+        "app/api/tencent",
+        "app/api/upstash",
+        "app/api/webdav"
+      ],
+      "components": [
+        "app/layout::RootLayout",
+        "app/page::App"
+      ]
+    },
+    {
+      "id": "app/api",
+      "label": "api",
+      "section": "artifacts",
+      "files": 18,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]"
+      ],
+      "components": []
+    },
+    {
+      "id": "app/api/[provider]",
+      "label": "[provider]",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/artifacts",
+        "app/api/config",
+        "app/api/tencent",
+        "app/api/webdav"
+      ],
+      "components": []
+    },
+    {
+      "id": "app/api/artifacts",
+      "label": "artifacts",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/api/config",
+      "label": "config",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/api/tencent",
+      "label": "tencent",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/api/upstash",
+      "label": "upstash",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/api/webdav",
+      "label": "webdav",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/client",
+      "label": "client",
+      "section": "artifacts",
+      "files": 2,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]"
+      ],
+      "components": []
+    },
+    {
+      "id": "app/components",
+      "label": "components",
+      "section": "artifacts",
+      "files": 22,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]"
+      ],
+      "components": [
+        "app/components/artifacts::Artifacts",
+        "app/components/artifacts::ArtifactsShareButton",
+        "app/components/artifacts::HTMLPreview",
+        "app/components/auth::AuthPage",
+        "app/components/auth::TopBanner",
+        "app/components/button::IconButton",
+        "app/components/chat-list::ChatItem",
+        "app/components/chat-list::ChatList",
+        "app/components/chat::Chat",
+        "app/components/chat::ChatAction",
+        "app/components/chat::ChatActions",
+        "app/components/chat::ClearContextDivider",
+        "app/components/chat::DeleteImageButton",
+        "app/components/chat::EditMessageModal",
+        "app/components/chat::MCPAction",
+        "app/components/chat::PromptHints",
+        "app/components/chat::PromptToast",
+        "app/components/chat::SessionConfigModel",
+        "app/components/chat::ShortcutKeyModal",
+        "app/components/emoji::Avatar",
+        "app/components/emoji::AvatarPicker",
+        "app/components/emoji::EmojiAvatar",
+        "app/components/error::ErrorBoundary",
+        "app/components/exporter::ExportMessageModal",
+        "app/components/exporter::ImagePreviewer",
+        "app/components/exporter::JsonPreviewer",
+        "app/components/exporter::MarkdownPreviewer",
+        "app/components/exporter::MessageExporter",
+        "app/components/exporter::PreviewActions",
+        "app/components/exporter::RenderExport",
+        "app/components/exporter::Steps",
+        "app/components/home::Home",
+        "app/components/home::Loading",
+        "app/components/home::Screen",
+        "app/components/home::WindowContent",
+        "app/components/input-range::InputRange",
+        "app/components/markdown::CustomCode",
+        "app/components/markdown::Markdown",
+        "app/components/markdown::Mermaid",
+        "app/components/markdown::PreCode",
+        "app/components/mask::ContextPromptItem",
+        "app/components/mask::ContextPrompts",
+        "app/components/mask::MaskAvatar",
+        "app/components/mask::MaskConfig",
+        "app/components/mask::MaskPage",
+        "app/components/mcp-market::McpMarketPage",
+        "app/components/message-selector::MessageSelector",
+        "app/components/model-config::ModelConfigList",
+        "app/components/new-chat::MaskItem",
+        "app/components/new-chat::NewChat",
+        "app/components/plugin::PluginPage",
+        "app/components/search-chat::SearchChatPage",
+        "app/components/settings::CheckButton",
+        "app/components/settings::DangerItems",
+        "app/components/settings::EditPromptModal",
+        "app/components/settings::Settings",
+        "app/components/settings::SyncConfigModal",
+        "app/components/settings::SyncItems",
+        "app/components/settings::UserPromptModal",
+        "app/components/sidebar::SideBar",
+        "app/components/sidebar::SideBarBody",
+        "app/components/sidebar::SideBarContainer",
+        "app/components/sidebar::SideBarHeader",
+        "app/components/sidebar::SideBarTail",
+        "app/components/tts-config::TTSConfigList",
+        "app/components/ui-lib::Card",
+        "app/components/ui-lib::FullScreen",
+        "app/components/ui-lib::Input",
+        "app/components/ui-lib::List",
+        "app/components/ui-lib::ListItem",
+        "app/components/ui-lib::Loading",
+        "app/components/ui-lib::Modal",
+        "app/components/ui-lib::PasswordInput",
+        "app/components/ui-lib::Popover",
+        "app/components/ui-lib::PromptInput",
+        "app/components/ui-lib::Select",
+        "app/components/ui-lib::Selector",
+        "app/components/ui-lib::Toast"
+      ]
+    },
+    {
+      "id": "app/components/realtime-chat",
+      "label": "realtime-chat",
+      "section": "artifacts",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": [
+        "app/components/realtime-chat/realtime-chat::RealtimeChat",
+        "app/components/realtime-chat/realtime-config::RealtimeConfigList"
+      ]
+    },
+    {
+      "id": "app/components/sd",
+      "label": "sd",
+      "section": "artifacts",
+      "files": 4,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": [
+        "app/components/sd/sd-panel::ControlParam",
+        "app/components/sd/sd-panel::ControlParamItem",
+        "app/components/sd/sd-panel::SdPanel",
+        "app/components/sd/sd-sidebar::SideBar",
+        "app/components/sd/sd::Sd"
+      ]
+    },
+    {
+      "id": "app/mcp",
+      "label": "mcp",
+      "section": "artifacts",
+      "files": 5,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/store",
+      "label": "store",
+      "section": "artifacts",
+      "files": 10,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]",
+        "app/api/config"
+      ],
+      "components": []
+    },
+    {
+      "id": "app/utils/cloud",
+      "label": "cloud",
+      "section": "artifacts",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [
+        "app/api/[provider]",
+        "app/api/upstash",
+        "app/api/webdav"
+      ],
+      "components": []
+    },
+    {
+      "id": "next.config",
+      "label": "next.config",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [
+        "app/api/[provider]"
+      ],
+      "components": []
+    },
+    {
+      "id": "public/serviceWorker",
+      "label": "serviceWorker",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [
+        "app/api/[provider]"
+      ],
+      "components": []
+    }
+  ],
+  "quiet": [
+    {
+      "id": "app/client/platforms",
+      "label": "platforms",
+      "section": "artifacts",
+      "files": 14,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/components/voice-print",
+      "label": "voice-print",
+      "section": "artifacts",
+      "files": 2,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": [
+        "app/components/voice-print/voice-print::VoicePrint"
+      ]
+    },
+    {
+      "id": "app/config",
+      "label": "config",
+      "section": "home",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/lib",
+      "label": "lib",
+      "section": "artifacts",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/locales",
+      "label": "locales",
+      "section": "artifacts",
+      "files": 21,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/masks",
+      "label": "masks",
+      "section": "artifacts",
+      "files": 6,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/utils",
+      "label": "utils",
+      "section": "artifacts",
+      "files": 19,
+      "tables": {},
+      "pages": [
+        "/",
+        "/artifacts/*"
+      ],
+      "calls": [],
+      "components": []
+    }
+  ],
+  "offMap": [],
+  "tables": [],
+  "ai": [
+    {
+      "id": "app/client/platforms",
+      "label": "Platforms",
+      "file": "app/client/platforms/ai302.ts",
+      "section": "artifacts",
+      "reads": []
+    }
+  ],
+  "services": [
+    {
+      "id": "http:nextchat.club",
+      "label": "nextchat.club",
+      "kind": "http",
+      "groups": [
+        "app/components"
+      ],
+      "files": 1,
+      "section": "artifacts"
+    }
+  ],
+  "shared": [],
+  "gaps": [
+    {
+      "kind": "good-to-know",
+      "text": "Too few pages were found to have a menu, so sections are the route folders.",
+      "detail": "2 pages"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "A few of the code groups are used by no page this map can follow (background jobs, webhooks, other apps, or calls built at runtime), so they belong to no section.",
+      "detail": "2 of 17 groups"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "No data access was found (this reads Supabase, Prisma, Firestore, Firebase admin, Drizzle, Mongoose, Knex, SQL), so the Data floor is empty."
+    },
+    {
+      "kind": "good-to-know",
+      "text": "Some of the components with an id are rendered by no page this map can follow (a page outside the menu, a screen opened at runtime, or unused), so they are listed under their code only.",
+      "detail": "30 of 88 components"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "Some links in the code are missing: imports of the product's own code that resolve to no file, and calls to /api/… that match no route handler here.",
+      "detail": "187 imports · 6 calls"
+    }
+  ]
+}

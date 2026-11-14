@@ -20,6 +20,7 @@ import { showConfirm } from "./ui-lib";
 import { useMobileScreen } from "../utils";
 import clsx from "clsx";
 
+// @uxid app/components/chat-list::ChatItem
 export function ChatItem(props: {
   onClick?: () => void;
   onDelete?: () => void;
@@ -45,7 +46,7 @@ export function ChatItem(props: {
   return (
     <Draggable draggableId={`${props.id}`} index={props.index}>
       {(provided) => (
-        <div
+        <div /* @uxid app/components/chat-list::ChatItem.div */
           className={clsx(styles["chat-item"], {
             [styles["chat-item-selected"]]:
               props.selected &&
@@ -86,7 +87,7 @@ export function ChatItem(props: {
             </>
           )}
 
-          <div
+          <div /* @uxid app/components/chat-list::ChatItem.div-2 */
             className={styles["chat-item-delete"]}
             onClickCapture={(e) => {
               props.onDelete?.();
@@ -102,6 +103,7 @@ export function ChatItem(props: {
   );
 }
 
+// @uxid app/components/chat-list::ChatList
 export function ChatList(props: { narrow?: boolean }) {
   const [sessions, selectedIndex, selectSession, moveSession] = useChatStore(
     (state) => [
@@ -132,7 +134,7 @@ export function ChatList(props: { narrow?: boolean }) {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext /* @uxid app/components/chat-list::ChatList.dragdropcontext */ onDragEnd={onDragEnd}>
       <Droppable droppableId="chat-list">
         {(provided) => (
           <div
@@ -141,7 +143,7 @@ export function ChatList(props: { narrow?: boolean }) {
             {...provided.droppableProps}
           >
             {sessions.map((item, i) => (
-              <ChatItem
+              <ChatItem /* @uxid app/components/chat-list::ChatList.chatitem */
                 title={item.topic}
                 time={new Date(item.lastUpdate).toLocaleString()}
                 count={item.messages.length}

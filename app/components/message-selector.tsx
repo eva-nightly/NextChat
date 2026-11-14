@@ -66,6 +66,7 @@ export function useMessageSelector() {
   };
 }
 
+// @uxid app/components/message-selector::MessageSelector
 export function MessageSelector(props: {
   selection: Set<string>;
   updateSelection: Updater<Set<string>>;
@@ -146,7 +147,7 @@ export function MessageSelector(props: {
   return (
     <div className={styles["message-selector"]}>
       <div className={styles["message-filter"]}>
-        <input
+        <input /* @uxid app/components/message-selector::MessageSelector.input */
           type="text"
           placeholder={Locale.Select.Search}
           className={clsx(styles["filter-item"], styles["search-bar"])}
@@ -158,13 +159,13 @@ export function MessageSelector(props: {
         ></input>
 
         <div className={styles["actions"]}>
-          <IconButton
+          <IconButton /* @uxid app/components/message-selector::MessageSelector.iconbutton */
             text={Locale.Select.All}
             bordered
             className={styles["filter-item"]}
             onClick={selectAll}
           />
-          <IconButton
+          <IconButton /* @uxid app/components/message-selector::MessageSelector.iconbutton-2 */
             text={Locale.Select.Latest}
             bordered
             className={styles["filter-item"]}
@@ -177,7 +178,7 @@ export function MessageSelector(props: {
               })
             }
           />
-          <IconButton
+          <IconButton /* @uxid app/components/message-selector::MessageSelector.iconbutton-3 */
             text={Locale.Select.Clear}
             bordered
             className={styles["filter-item"]}
@@ -195,7 +196,7 @@ export function MessageSelector(props: {
           const isSelected = props.selection.has(id);
 
           return (
-            <div
+            <div /* @uxid app/components/message-selector::MessageSelector.div */
               className={clsx(styles["message"], {
                 [styles["message-selected"]]: props.selection.has(m.id!),
               })}
@@ -227,7 +228,7 @@ export function MessageSelector(props: {
               </div>
 
               <div className={styles["checkbox"]}>
-                <input type="checkbox" checked={isSelected} readOnly></input>
+                <input /* @uxid app/components/message-selector::MessageSelector.checkbox */ type="checkbox" checked={isSelected} readOnly></input>
               </div>
             </div>
           );

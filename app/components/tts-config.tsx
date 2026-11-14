@@ -10,6 +10,7 @@ import {
 } from "../constant";
 import { InputRange } from "./input-range";
 
+// @uxid app/components/tts-config::TTSConfigList
 export function TTSConfigList(props: {
   ttsConfig: TTSConfig;
   updateConfig: (updater: (config: TTSConfig) => void) => void;
@@ -20,7 +21,7 @@ export function TTSConfigList(props: {
         title={Locale.Settings.TTS.Enable.Title}
         subTitle={Locale.Settings.TTS.Enable.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/tts-config::TTSConfigList.checkbox */
           type="checkbox"
           checked={props.ttsConfig.enable}
           onChange={(e) =>
@@ -45,7 +46,7 @@ export function TTSConfigList(props: {
         ></input>
       </ListItem> */}
       <ListItem title={Locale.Settings.TTS.Engine}>
-        <Select
+        <Select /* @uxid app/components/tts-config::TTSConfigList.select */
           value={props.ttsConfig.engine}
           onChange={(e) => {
             props.updateConfig(
@@ -57,7 +58,7 @@ export function TTSConfigList(props: {
           }}
         >
           {DEFAULT_TTS_ENGINES.map((v, i) => (
-            <option value={v} key={i}>
+            <option /* @uxid app/components/tts-config::TTSConfigList.option */ value={v} key={i}>
               {v}
             </option>
           ))}
@@ -66,7 +67,7 @@ export function TTSConfigList(props: {
       {props.ttsConfig.engine === DEFAULT_TTS_ENGINE && (
         <>
           <ListItem title={Locale.Settings.TTS.Model}>
-            <Select
+            <Select /* @uxid app/components/tts-config::TTSConfigList.select-2 */
               value={props.ttsConfig.model}
               onChange={(e) => {
                 props.updateConfig(
@@ -78,7 +79,7 @@ export function TTSConfigList(props: {
               }}
             >
               {DEFAULT_TTS_MODELS.map((v, i) => (
-                <option value={v} key={i}>
+                <option /* @uxid app/components/tts-config::TTSConfigList.option-2 */ value={v} key={i}>
                   {v}
                 </option>
               ))}
@@ -88,7 +89,7 @@ export function TTSConfigList(props: {
             title={Locale.Settings.TTS.Voice.Title}
             subTitle={Locale.Settings.TTS.Voice.SubTitle}
           >
-            <Select
+            <Select /* @uxid app/components/tts-config::TTSConfigList.select-3 */
               value={props.ttsConfig.voice}
               onChange={(e) => {
                 props.updateConfig(
@@ -100,7 +101,7 @@ export function TTSConfigList(props: {
               }}
             >
               {DEFAULT_TTS_VOICES.map((v, i) => (
-                <option value={v} key={i}>
+                <option /* @uxid app/components/tts-config::TTSConfigList.option-3 */ value={v} key={i}>
                   {v}
                 </option>
               ))}
@@ -110,7 +111,7 @@ export function TTSConfigList(props: {
             title={Locale.Settings.TTS.Speed.Title}
             subTitle={Locale.Settings.TTS.Speed.SubTitle}
           >
-            <InputRange
+            <InputRange /* @uxid app/components/tts-config::TTSConfigList.inputrange */
               aria={Locale.Settings.TTS.Speed.Title}
               value={props.ttsConfig.speed?.toFixed(1)}
               min="0.3"

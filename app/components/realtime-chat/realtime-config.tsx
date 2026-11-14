@@ -13,6 +13,7 @@ const models = ["gpt-4o-realtime-preview-2024-10-01"];
 
 const voice = ["alloy", "shimmer", "echo"];
 
+// @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList
 export function RealtimeConfigList(props: {
   realtimeConfig: RealtimeConfig;
   updateConfig: (updater: (config: RealtimeConfig) => void) => void;
@@ -24,7 +25,7 @@ export function RealtimeConfigList(props: {
         title={Locale.Settings.Realtime.Azure.Endpoint.Title}
         subTitle={Locale.Settings.Realtime.Azure.Endpoint.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.input */
           value={props.realtimeConfig?.azure?.endpoint}
           type="text"
           placeholder={Locale.Settings.Realtime.Azure.Endpoint.Title}
@@ -39,7 +40,7 @@ export function RealtimeConfigList(props: {
         title={Locale.Settings.Realtime.Azure.Deployment.Title}
         subTitle={Locale.Settings.Realtime.Azure.Deployment.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.input-2 */
           value={props.realtimeConfig?.azure?.deployment}
           type="text"
           placeholder={Locale.Settings.Realtime.Azure.Deployment.Title}
@@ -59,7 +60,7 @@ export function RealtimeConfigList(props: {
         title={Locale.Settings.Realtime.Enable.Title}
         subTitle={Locale.Settings.Realtime.Enable.SubTitle}
       >
-        <input
+        <input /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.checkbox */
           type="checkbox"
           checked={props.realtimeConfig.enable}
           onChange={(e) =>
@@ -76,7 +77,7 @@ export function RealtimeConfigList(props: {
             title={Locale.Settings.Realtime.Provider.Title}
             subTitle={Locale.Settings.Realtime.Provider.SubTitle}
           >
-            <Select
+            <Select /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.select */
               aria-label={Locale.Settings.Realtime.Provider.Title}
               value={props.realtimeConfig.provider}
               onChange={(e) => {
@@ -87,7 +88,7 @@ export function RealtimeConfigList(props: {
               }}
             >
               {providers.map((v, i) => (
-                <option value={v} key={i}>
+                <option /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.option */ value={v} key={i}>
                   {v}
                 </option>
               ))}
@@ -97,7 +98,7 @@ export function RealtimeConfigList(props: {
             title={Locale.Settings.Realtime.Model.Title}
             subTitle={Locale.Settings.Realtime.Model.SubTitle}
           >
-            <Select
+            <Select /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.select-2 */
               aria-label={Locale.Settings.Realtime.Model.Title}
               value={props.realtimeConfig.model}
               onChange={(e) => {
@@ -105,7 +106,7 @@ export function RealtimeConfigList(props: {
               }}
             >
               {models.map((v, i) => (
-                <option value={v} key={i}>
+                <option /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.option-2 */ value={v} key={i}>
                   {v}
                 </option>
               ))}
@@ -115,7 +116,7 @@ export function RealtimeConfigList(props: {
             title={Locale.Settings.Realtime.ApiKey.Title}
             subTitle={Locale.Settings.Realtime.ApiKey.SubTitle}
           >
-            <PasswordInput
+            <PasswordInput /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.passwordinput */
               aria={Locale.Settings.ShowPassword}
               aria-label={Locale.Settings.Realtime.ApiKey.Title}
               value={props.realtimeConfig.apiKey}
@@ -133,7 +134,7 @@ export function RealtimeConfigList(props: {
             title={Locale.Settings.TTS.Voice.Title}
             subTitle={Locale.Settings.TTS.Voice.SubTitle}
           >
-            <Select
+            <Select /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.select-3 */
               value={props.realtimeConfig.voice}
               onChange={(e) => {
                 props.updateConfig(
@@ -142,7 +143,7 @@ export function RealtimeConfigList(props: {
               }}
             >
               {voice.map((v, i) => (
-                <option value={v} key={i}>
+                <option /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.option-3 */ value={v} key={i}>
                   {v}
                 </option>
               ))}
@@ -152,7 +153,7 @@ export function RealtimeConfigList(props: {
             title={Locale.Settings.Realtime.Temperature.Title}
             subTitle={Locale.Settings.Realtime.Temperature.SubTitle}
           >
-            <InputRange
+            <InputRange /* @uxid app/components/realtime-chat/realtime-config::RealtimeConfigList.inputrange */
               aria={Locale.Settings.Temperature.Title}
               value={props.realtimeConfig?.temperature?.toFixed(1)}
               min="0.6"

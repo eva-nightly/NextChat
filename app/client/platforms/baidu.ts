@@ -44,6 +44,7 @@ interface RequestPayload {
   max_tokens?: number;
 }
 
+// @uxid app/client/platforms/baidu::ErnieApi
 export class ErnieApi implements LLMApi {
   path(path: string): string {
     const accessStore = useAccessStore.getState();

@@ -29,6 +29,7 @@ import { nanoid } from "nanoid";
 import { RequestPayload } from "./openai";
 import { fetch } from "@/app/utils/stream";
 
+// @uxid app/client/platforms/google::GeminiProApi
 export class GeminiProApi implements LLMApi {
   path(path: string, shouldStream = false): string {
     const accessStore = useAccessStore.getState();

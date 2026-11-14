@@ -25,6 +25,7 @@ import {
 import { RequestPayload } from "./openai";
 import { fetch } from "@/app/utils/stream";
 
+// @uxid app/client/platforms/deepseek::DeepSeekApi
 export class DeepSeekApi implements LLMApi {
   private disableListModels = true;
 

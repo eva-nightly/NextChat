@@ -25,6 +25,7 @@ import { IconButton } from "./button";
 import { useAppConfig } from "../store/config";
 import clsx from "clsx";
 
+// @uxid app/components/markdown::Mermaid
 export function Mermaid(props: { code: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasError, setHasError] = useState(false);
@@ -57,7 +58,7 @@ export function Mermaid(props: { code: string }) {
   }
 
   return (
-    <div
+    <div /* @uxid app/components/markdown::Mermaid.div */
       className={clsx("no-dark", "mermaid")}
       style={{
         cursor: "pointer",
@@ -71,6 +72,7 @@ export function Mermaid(props: { code: string }) {
   );
 }
 
+// @uxid app/components/markdown::PreCode
 export function PreCode(props: { children: any }) {
   const ref = useRef<HTMLPreElement>(null);
   const previewRef = useRef<HTMLPreviewHandler>(null);
@@ -133,7 +135,7 @@ export function PreCode(props: { children: any }) {
   return (
     <>
       <pre ref={ref}>
-        <span
+        <span /* @uxid app/components/markdown::PreCode.span */
           className="copy-code-button"
           onClick={() => {
             if (ref.current) {
@@ -154,7 +156,7 @@ export function PreCode(props: { children: any }) {
             style={{ position: "absolute", right: 20, top: 10 }}
             getCode={() => htmlCode}
           />
-          <IconButton
+          <IconButton /* @uxid app/components/markdown::PreCode.iconbutton */
             style={{ position: "absolute", right: 120, top: 10 }}
             bordered
             icon={<ReloadButtonIcon />}
@@ -173,6 +175,7 @@ export function PreCode(props: { children: any }) {
   );
 }
 
+// @uxid app/components/markdown::CustomCode
 function CustomCode(props: { children: any; className?: string }) {
   const chatStore = useChatStore();
   const session = chatStore.currentSession();
@@ -204,7 +207,7 @@ function CustomCode(props: { children: any; className?: string }) {
             expanded: !collapsed,
           })}
         >
-          <button onClick={toggleCollapsed}>{Locale.NewChat.More}</button>
+          <button /* @uxid app/components/markdown::CustomCode.button */ onClick={toggleCollapsed}>{Locale.NewChat.More}</button>
         </div>
       );
     }
@@ -307,7 +310,7 @@ function _MarkDownContent(props: { content: string }) {
           }
           const isInternal = /^\/#/i.test(href);
           const target = isInternal ? "_self" : aProps.target ?? "_blank";
-          return <a {...aProps} target={target} />;
+          return <a /* @uxid app/components/markdown::_MarkDownContent.link */ {...aProps} target={target} />;
         },
       }}
     >
@@ -318,6 +321,7 @@ function _MarkDownContent(props: { content: string }) {
 
 export const MarkdownContent = React.memo(_MarkDownContent);
 
+// @uxid app/components/markdown::Markdown
 export function Markdown(
   props: {
     content: string;
@@ -331,7 +335,7 @@ export function Markdown(
   const mdRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
+    <div /* @uxid app/components/markdown::Markdown.div */
       className="markdown-body"
       style={{
         fontSize: `${props.fontSize ?? 14}px`,

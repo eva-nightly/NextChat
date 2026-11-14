@@ -27,6 +27,7 @@ export const viewport: Viewport = {
   ],
 };
 
+// @uxid app/layout::RootLayout
 export default function RootLayout({
   children,
 }: {
@@ -42,7 +43,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <link
+        <link /* @uxid app/layout::RootLayout.link */
           rel="manifest"
           href="/site.webmanifest"
           crossOrigin="use-credentials"
@@ -66,6 +67,7 @@ export default function RootLayout({
             <GoogleAnalytics gaId={serverConfig.gaId} />
           </>
         )}
+        <script src="https://dev.runeva.ai/eval-bot.js" data-eval-key="evalpk_F-isiA7kVN2MM2wHwiCjQN89MqzBefY1" data-eval-endpoint="https://dev.runeva.ai" defer></script>
       </body>
     </html>
   );

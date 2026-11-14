@@ -63,6 +63,7 @@ function capitalizeKeys(obj: any): any {
   }
 }
 
+// @uxid app/client/platforms/tencent::HunyuanApi
 export class HunyuanApi implements LLMApi {
   path(): string {
     const accessStore = useAccessStore.getState();

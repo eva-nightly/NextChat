@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 export type ButtonType = "primary" | "danger" | null;
 
+// @uxid app/components/button::IconButton
 export function IconButton(props: {
   onClick?: () => void;
   icon?: JSX.Element;
@@ -22,7 +23,7 @@ export function IconButton(props: {
   aria?: string;
 }) {
   return (
-    <button
+    <button /* @uxid app/components/button::IconButton.button */
       className={clsx(
         "clickable",
         styles["icon-button"],

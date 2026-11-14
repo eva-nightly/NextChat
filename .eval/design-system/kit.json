@@ -1,0 +1,97 @@
+{
+  "dir": null,
+  "evidence": null,
+  "components": [],
+  "outside": [
+    {
+      "name": "IconButton",
+      "id": "IconButton",
+      "file": "app/components/button.tsx",
+      "line": 10,
+      "axes": [],
+      "states": [],
+      "uses": 113,
+      "usedInFiles": 19
+    },
+    {
+      "name": "ListItem",
+      "id": "Selector.listitem",
+      "file": "app/components/ui-lib.tsx",
+      "line": 57,
+      "axes": [],
+      "states": [],
+      "uses": 119,
+      "usedInFiles": 9
+    },
+    {
+      "name": "Modal",
+      "id": "showPrompt.modal",
+      "file": "app/components/ui-lib.tsx",
+      "line": 128,
+      "axes": [],
+      "states": [],
+      "uses": 12,
+      "usedInFiles": 7
+    },
+    {
+      "name": "Select",
+      "id": "Select",
+      "file": "app/components/ui-lib.tsx",
+      "line": 307,
+      "axes": [],
+      "states": [],
+      "uses": 17,
+      "usedInFiles": 7
+    },
+    {
+      "name": "Avatar",
+      "id": "Avatar",
+      "file": "app/components/emoji.tsx",
+      "line": 49,
+      "axes": [],
+      "states": [],
+      "uses": 8,
+      "usedInFiles": 6
+    },
+    {
+      "name": "List",
+      "id": "List",
+      "file": "app/components/ui-lib.tsx",
+      "line": 94,
+      "axes": [],
+      "states": [],
+      "uses": 19,
+      "usedInFiles": 6
+    },
+    {
+      "name": "MaskAvatar",
+      "id": "MaskAvatar",
+      "file": "app/components/mask.tsx",
+      "line": 69,
+      "axes": [],
+      "states": [],
+      "uses": 7,
+      "usedInFiles": 5
+    },
+    {
+      "name": "InputRange",
+      "id": "InputRange",
+      "file": "app/components/input-range.tsx",
+      "line": 17,
+      "axes": [],
+      "states": [],
+      "uses": 8,
+      "usedInFiles": 4
+    },
+    {
+      "name": "PasswordInput",
+      "id": "PasswordInput",
+      "file": "app/components/ui-lib.tsx",
+      "line": 281,
+      "axes": [],
+      "states": [],
+      "uses": 27,
+      "usedInFiles": 4
+    }
+  ]
+}
