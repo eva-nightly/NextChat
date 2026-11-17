@@ -33,6 +33,7 @@ export type HTMLPreviewHandler = {
   reload: () => void;
 };
 
+// @uxid app/components/artifacts::HTMLPreview
 export const HTMLPreview = forwardRef<HTMLPreviewHandler, HTMLPreviewProps>(
   function HTMLPreview(props, ref) {
     const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -93,7 +94,7 @@ export const HTMLPreview = forwardRef<HTMLPreviewHandler, HTMLPreviewProps>(
     };
 
     return (
-      <iframe
+      <iframe /* @uxid app/components/artifacts::HTMLPreview.iframe */
         className={styles["artifacts-iframe"]}
         key={frameId}
         ref={iframeRef}
@@ -106,6 +107,7 @@ export const HTMLPreview = forwardRef<HTMLPreviewHandler, HTMLPreviewProps>(
   },
 );
 
+// @uxid app/components/artifacts::ArtifactsShareButton
 export function ArtifactsShareButton({
   getCode,
   id,
@@ -144,7 +146,7 @@ export function ArtifactsShareButton({
   return (
     <>
       <div className="window-action-button" style={style}>
-        <IconButton
+        <IconButton /* @uxid app/components/artifacts::ArtifactsShareButton.iconbutton */
           icon={loading ? <LoadingButtonIcon /> : <ExportIcon />}
           bordered
           title={Locale.Export.Artifacts.Title}
@@ -164,11 +166,11 @@ export function ArtifactsShareButton({
       </div>
       {show && (
         <div className="modal-mask">
-          <Modal
+          <Modal /* @uxid app/components/artifacts::ArtifactsShareButton.modal */
             title={Locale.Export.Artifacts.Title}
             onClose={() => setShow(false)}
             actions={[
-              <IconButton
+              <IconButton /* @uxid app/components/artifacts::ArtifactsShareButton.iconbutton-2 */
                 key="download"
                 icon={<DownloadIcon />}
                 bordered
@@ -179,7 +181,7 @@ export function ArtifactsShareButton({
                   );
                 }}
               />,
-              <IconButton
+              <IconButton /* @uxid app/components/artifacts::ArtifactsShareButton.iconbutton-3 */
                 key="copy"
                 icon={<CopyIcon />}
                 bordered
@@ -191,7 +193,7 @@ export function ArtifactsShareButton({
             ]}
           >
             <div>
-              <a target="_blank" href={shareUrl}>
+              <a /* @uxid app/components/artifacts::ArtifactsShareButton.link */ target="_blank" href={shareUrl}>
                 {shareUrl}
               </a>
             </div>
@@ -202,6 +204,7 @@ export function ArtifactsShareButton({
   );
 }
 
+// @uxid app/components/artifacts::Artifacts
 export function Artifacts() {
   const { id } = useParams();
   const [code, setCode] = useState("");
@@ -229,10 +232,10 @@ export function Artifacts() {
   return (
     <div className={styles["artifacts"]}>
       <div className={styles["artifacts-header"]}>
-        <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
+        <a /* @uxid app/components/artifacts::Artifacts.link */ href={REPO_URL} target="_blank" rel="noopener noreferrer">
           <IconButton bordered icon={<GithubIcon />} shadow />
         </a>
-        <IconButton
+        <IconButton /* @uxid app/components/artifacts::Artifacts.iconbutton */
           bordered
           style={{ marginLeft: 20 }}
           icon={<ReloadButtonIcon />}
@@ -249,7 +252,7 @@ export function Artifacts() {
       <div className={styles["artifacts-content"]}>
         {loading && <Loading />}
         {code && (
-          <HTMLPreview
+          <HTMLPreview /* @uxid app/components/artifacts::Artifacts.htmlpreview */
             code={code}
             ref={previewRef}
             autoHeight={false}

@@ -28,11 +28,12 @@ export function getEmojiUrl(unified: string, style: EmojiStyle) {
   return `https://fastly.jsdelivr.net/npm/emoji-datasource-apple/img/${style}/64/${unified}.png`;
 }
 
+// @uxid app/components/emoji::AvatarPicker
 export function AvatarPicker(props: {
   onEmojiClick: (emojiId: string) => void;
 }) {
   return (
-    <EmojiPicker
+    <EmojiPicker /* @uxid app/components/emoji::AvatarPicker.emojipicker */
       width={"100%"}
       lazyLoadEmojis
       theme={EmojiTheme.AUTO}
@@ -44,6 +45,7 @@ export function AvatarPicker(props: {
   );
 }
 
+// @uxid app/components/emoji::Avatar
 export function Avatar(props: { model?: ModelType; avatar?: string }) {
   let LlmIcon = BotIconDefault;
 
@@ -99,6 +101,7 @@ export function Avatar(props: { model?: ModelType; avatar?: string }) {
   );
 }
 
+// @uxid app/components/emoji::EmojiAvatar
 export function EmojiAvatar(props: { avatar: string; size?: number }) {
   return (
     <Emoji

@@ -30,6 +30,7 @@ const SdPanel = dynamic(
   },
 );
 
+// @uxid app/components/sd/sd-sidebar::SideBar
 export function SideBar(props: { className?: string }) {
   useHotKey();
   const isMobileScreen = useMobileScreen();
@@ -68,7 +69,7 @@ export function SideBar(props: { className?: string }) {
   };
 
   return (
-    <SideBarContainer
+    <SideBarContainer /* @uxid app/components/sd/sd-sidebar::SideBar.sidebarcontainer */
       onDragStart={onDragStart}
       shouldNarrow={shouldNarrow}
       {...props}
@@ -84,7 +85,7 @@ export function SideBar(props: { className?: string }) {
         >
           <div className="window-actions">
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/sd/sd-sidebar::SideBar.iconbutton */
                 icon={<ReturnIcon />}
                 bordered
                 title={Locale.Sd.Actions.ReturnHome}
@@ -95,7 +96,7 @@ export function SideBar(props: { className?: string }) {
           <SDIcon width={50} height={50} />
           <div className="window-actions">
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/sd/sd-sidebar::SideBar.iconbutton-2 */
                 icon={<HistoryIcon />}
                 bordered
                 title={Locale.Sd.Actions.History}
@@ -107,7 +108,7 @@ export function SideBar(props: { className?: string }) {
       ) : (
         <SideBarHeader
           title={
-            <IconButton
+            <IconButton /* @uxid app/components/sd/sd-sidebar::SideBar.iconbutton-3 */
               icon={<ReturnIcon />}
               bordered
               title={Locale.Sd.Actions.ReturnHome}
@@ -122,12 +123,12 @@ export function SideBar(props: { className?: string }) {
       </SideBarBody>
       <SideBarTail
         primaryAction={
-          <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
+          <a /* @uxid app/components/sd/sd-sidebar::SideBar.link */ href={REPO_URL} target="_blank" rel="noopener noreferrer">
             <IconButton icon={<GithubIcon />} shadow />
           </a>
         }
         secondaryAction={
-          <IconButton
+          <IconButton /* @uxid app/components/sd/sd-sidebar::SideBar.iconbutton-4 */
             text={Locale.SdPanel.Submit}
             type="primary"
             shadow

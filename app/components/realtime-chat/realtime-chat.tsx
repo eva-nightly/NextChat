@@ -28,6 +28,7 @@ interface RealtimeChatProps {
   onPausedVoice?: () => void;
 }
 
+// @uxid app/components/realtime-chat/realtime-chat::RealtimeChat
 export function RealtimeChat({
   onClose,
   onStartVoice,
@@ -336,7 +337,7 @@ export function RealtimeChat({
 
       <div className={styles["bottom-icons"]}>
         <div>
-          <IconButton
+          <IconButton /* @uxid app/components/realtime-chat/realtime-chat::RealtimeChat.iconbutton */
             icon={isRecording ? <VoiceIcon /> : <VoiceOffIcon />}
             onClick={toggleRecording}
             disabled={!isConnected}
@@ -346,7 +347,7 @@ export function RealtimeChat({
         </div>
         <div className={styles["icon-center"]}>{status}</div>
         <div>
-          <IconButton
+          <IconButton /* @uxid app/components/realtime-chat/realtime-chat::RealtimeChat.iconbutton-2 */
             icon={<PowerIcon />}
             onClick={handleClose}
             shadow
