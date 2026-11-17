@@ -21,6 +21,7 @@ declare global {
   type DangerConfig = typeof DANGER_CONFIG;
 }
 
+// @uxid app/api/config/route::handle
 async function handle() {
   return NextResponse.json(DANGER_CONFIG);
 }

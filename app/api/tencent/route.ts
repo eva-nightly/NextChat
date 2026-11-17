@@ -7,6 +7,7 @@ import { getHeader } from "@/app/utils/tencent";
 
 const serverConfig = getServerSideConfig();
 
+// @uxid app/api/tencent/route::handle
 async function handle(
   req: NextRequest,
   { params }: { params: { path: string[] } },
@@ -57,6 +58,7 @@ export const preferredRegion = [
   "syd1",
 ];
 
+// @uxid app/api/tencent/route::request
 async function request(req: NextRequest) {
   const controller = new AbortController();
 

@@ -22,6 +22,7 @@ import { preProcessImageContent } from "@/app/utils/chat";
 import { RequestPayload } from "./openai";
 import { fetch } from "@/app/utils/stream";
 
+// @uxid app/client/platforms/xai::XAIApi
 export class XAIApi implements LLMApi {
   private disableListModels = true;
 

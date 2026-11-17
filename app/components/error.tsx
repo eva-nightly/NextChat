@@ -16,6 +16,7 @@ interface IErrorBoundaryState {
   info: React.ErrorInfo | null;
 }
 
+// @uxid app/components/error::ErrorBoundary
 export class ErrorBoundary extends React.Component<any, IErrorBoundaryState> {
   constructor(props: any) {
     super(props);
@@ -47,14 +48,14 @@ export class ErrorBoundary extends React.Component<any, IErrorBoundaryState> {
           </pre>
 
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <a href={ISSUE_URL} className="report">
+            <a /* @uxid app/components/error::ErrorBoundary.link */ href={ISSUE_URL} className="report">
               <IconButton
                 text="Report This Error"
                 icon={<GithubIcon />}
                 bordered
               />
             </a>
-            <IconButton
+            <IconButton /* @uxid app/components/error::ErrorBoundary.iconbutton */
               icon={<ResetIcon />}
               text="Clear All Data"
               onClick={async () => {

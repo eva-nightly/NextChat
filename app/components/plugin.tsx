@@ -30,6 +30,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import clsx from "clsx";
 
+// @uxid app/components/plugin::PluginPage
 export function PluginPage() {
   const navigate = useNavigate();
   const pluginStore = usePluginStore();
@@ -131,7 +132,7 @@ export function PluginPage() {
 
           <div className="window-actions">
             <div className="window-action-button">
-              <a
+              <a /* @uxid app/components/plugin::PluginPage.link */
                 href={PLUGINS_REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -140,7 +141,7 @@ export function PluginPage() {
               </a>
             </div>
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton */
                 icon={<CloseIcon />}
                 bordered
                 onClick={() => navigate(-1)}
@@ -151,7 +152,7 @@ export function PluginPage() {
 
         <div className={styles["mask-page-body"]}>
           <div className={styles["mask-filter"]}>
-            <input
+            <input /* @uxid app/components/plugin::PluginPage.input */
               type="text"
               className={styles["search-bar"]}
               placeholder={Locale.Plugin.Page.Search}
@@ -159,7 +160,7 @@ export function PluginPage() {
               onInput={(e) => onSearch(e.currentTarget.value)}
             />
 
-            <IconButton
+            <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton-2 */
               className={styles["mask-create"]}
               icon={<AddIcon />}
               text={Locale.Plugin.Page.Create}
@@ -182,7 +183,7 @@ export function PluginPage() {
                 }}
               >
                 {Locale.Plugin.Page.Find}
-                <a
+                <a /* @uxid app/components/plugin::PluginPage.link-2 */
                   href={PLUGINS_REPO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -208,13 +209,13 @@ export function PluginPage() {
                   </div>
                 </div>
                 <div className={styles["mask-actions"]}>
-                  <IconButton
+                  <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton-3 */
                     icon={<EditIcon />}
                     text={Locale.Plugin.Item.Edit}
                     onClick={() => setEditingPluginId(m.id)}
                   />
                   {!m.builtin && (
-                    <IconButton
+                    <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton-4 */
                       icon={<DeleteIcon />}
                       text={Locale.Plugin.Item.Delete}
                       onClick={async () => {
@@ -235,11 +236,11 @@ export function PluginPage() {
 
       {editingPlugin && (
         <div className="modal-mask">
-          <Modal
+          <Modal /* @uxid app/components/plugin::PluginPage.modal */
             title={Locale.Plugin.EditModal.Title(editingPlugin?.builtin)}
             onClose={closePluginModal}
             actions={[
-              <IconButton
+              <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton-5 */
                 icon={<ConfirmIcon />}
                 text={Locale.UI.Confirm}
                 key="export"
@@ -250,7 +251,7 @@ export function PluginPage() {
           >
             <List>
               <ListItem title={Locale.Plugin.EditModal.Auth}>
-                <select
+                <select /* @uxid app/components/plugin::PluginPage.select */
                   value={editingPlugin?.authType}
                   onChange={(e) => {
                     pluginStore.updatePlugin(editingPlugin.id, (plugin) => {
@@ -258,17 +259,17 @@ export function PluginPage() {
                     });
                   }}
                 >
-                  <option value="">{Locale.Plugin.Auth.None}</option>
-                  <option value="bearer">{Locale.Plugin.Auth.Bearer}</option>
-                  <option value="basic">{Locale.Plugin.Auth.Basic}</option>
-                  <option value="custom">{Locale.Plugin.Auth.Custom}</option>
+                  <option /* @uxid app/components/plugin::PluginPage.option */ value="">{Locale.Plugin.Auth.None}</option>
+                  <option /* @uxid app/components/plugin::PluginPage.option-2 */ value="bearer">{Locale.Plugin.Auth.Bearer}</option>
+                  <option /* @uxid app/components/plugin::PluginPage.option-3 */ value="basic">{Locale.Plugin.Auth.Basic}</option>
+                  <option /* @uxid app/components/plugin::PluginPage.option-4 */ value="custom">{Locale.Plugin.Auth.Custom}</option>
                 </select>
               </ListItem>
               {["bearer", "basic", "custom"].includes(
                 editingPlugin.authType as string,
               ) && (
                 <ListItem title={Locale.Plugin.Auth.Location}>
-                  <select
+                  <select /* @uxid app/components/plugin::PluginPage.select-2 */
                     value={editingPlugin?.authLocation}
                     onChange={(e) => {
                       pluginStore.updatePlugin(editingPlugin.id, (plugin) => {
@@ -276,13 +277,13 @@ export function PluginPage() {
                       });
                     }}
                   >
-                    <option value="header">
+                    <option /* @uxid app/components/plugin::PluginPage.option-5 */ value="header">
                       {Locale.Plugin.Auth.LocationHeader}
                     </option>
-                    <option value="query">
+                    <option /* @uxid app/components/plugin::PluginPage.option-6 */ value="query">
                       {Locale.Plugin.Auth.LocationQuery}
                     </option>
-                    <option value="body">
+                    <option /* @uxid app/components/plugin::PluginPage.option-7 */ value="body">
                       {Locale.Plugin.Auth.LocationBody}
                     </option>
                   </select>
@@ -290,7 +291,7 @@ export function PluginPage() {
               )}
               {editingPlugin.authType == "custom" && (
                 <ListItem title={Locale.Plugin.Auth.CustomHeader}>
-                  <input
+                  <input /* @uxid app/components/plugin::PluginPage.input-2 */
                     type="text"
                     value={editingPlugin?.authHeader}
                     onChange={(e) => {
@@ -305,7 +306,7 @@ export function PluginPage() {
                 editingPlugin.authType as string,
               ) && (
                 <ListItem title={Locale.Plugin.Auth.Token}>
-                  <PasswordInput
+                  <PasswordInput /* @uxid app/components/plugin::PluginPage.passwordinput */
                     type="text"
                     value={editingPlugin?.authToken}
                     onChange={(e) => {
@@ -320,12 +321,12 @@ export function PluginPage() {
             <List>
               <ListItem title={Locale.Plugin.EditModal.Content}>
                 <div className={pluginStyles["plugin-schema"]}>
-                  <input
+                  <input /* @uxid app/components/plugin::PluginPage.input-3 */
                     type="text"
                     style={{ minWidth: 200 }}
                     onInput={(e) => setLoadUrl(e.currentTarget.value)}
                   ></input>
-                  <IconButton
+                  <IconButton /* @uxid app/components/plugin::PluginPage.iconbutton-6 */
                     icon={<ReloadIcon />}
                     text={Locale.Plugin.EditModal.Load}
                     bordered
@@ -343,7 +344,7 @@ export function PluginPage() {
                     dir="auto"
                   >
                     <pre>
-                      <code
+                      <code /* @uxid app/components/plugin::PluginPage.code */
                         contentEditable={true}
                         dangerouslySetInnerHTML={{
                           __html: editingPlugin.content,

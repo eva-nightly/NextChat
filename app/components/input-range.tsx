@@ -13,6 +13,7 @@ interface InputRangeProps {
   aria: string;
 }
 
+// @uxid app/components/input-range::InputRange
 export function InputRange({
   onChange,
   title,
@@ -26,7 +27,7 @@ export function InputRange({
   return (
     <div className={clsx(styles["input-range"], className)}>
       {title || value}
-      <input
+      <input /* @uxid app/components/input-range::InputRange.range */
         aria-label={aria}
         type="range"
         title={title}

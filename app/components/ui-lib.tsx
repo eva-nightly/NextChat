@@ -26,6 +26,7 @@ import { IconButton } from "./button";
 import { Avatar } from "./emoji";
 import clsx from "clsx";
 
+// @uxid app/components/ui-lib::Popover
 export function Popover(props: {
   children: JSX.Element;
   content: JSX.Element;
@@ -36,7 +37,7 @@ export function Popover(props: {
     <div className={styles.popover}>
       {props.children}
       {props.open && (
-        <div className={styles["popover-mask"]} onClick={props.onClose}></div>
+        <div /* @uxid app/components/ui-lib::Popover.div */ className={styles["popover-mask"]} onClick={props.onClose}></div>
       )}
       {props.open && (
         <div className={styles["popover-content"]}>{props.content}</div>
@@ -45,12 +46,14 @@ export function Popover(props: {
   );
 }
 
+// @uxid app/components/ui-lib::Card
 export function Card(props: { children: JSX.Element[]; className?: string }) {
   return (
     <div className={clsx(styles.card, props.className)}>{props.children}</div>
   );
 }
 
+// @uxid app/components/ui-lib::ListItem
 export function ListItem(props: {
   title?: string;
   subTitle?: string | JSX.Element;
@@ -61,7 +64,7 @@ export function ListItem(props: {
   vertical?: boolean;
 }) {
   return (
-    <div
+    <div /* @uxid app/components/ui-lib::ListItem.div */
       className={clsx(
         styles["list-item"],
         {
@@ -87,6 +90,7 @@ export function ListItem(props: {
   );
 }
 
+// @uxid app/components/ui-lib::List
 export function List(props: { children: React.ReactNode; id?: string }) {
   return (
     <div className={styles.list} id={props.id}>
@@ -95,6 +99,7 @@ export function List(props: { children: React.ReactNode; id?: string }) {
   );
 }
 
+// @uxid app/components/ui-lib::Loading
 export function Loading() {
   return (
     <div
@@ -119,6 +124,7 @@ interface ModalProps {
   footer?: React.ReactNode;
   onClose?: () => void;
 }
+// @uxid app/components/ui-lib::Modal
 export function Modal(props: ModalProps) {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -147,13 +153,13 @@ export function Modal(props: ModalProps) {
         <div className={styles["modal-title"]}>{props.title}</div>
 
         <div className={styles["modal-header-actions"]}>
-          <div
+          <div /* @uxid app/components/ui-lib::Modal.div */
             className={styles["modal-header-action"]}
             onClick={() => setMax(!isMax)}
           >
             {isMax ? <MinIcon /> : <MaxIcon />}
           </div>
-          <div
+          <div /* @uxid app/components/ui-lib::Modal.div-2 */
             className={styles["modal-header-action"]}
             onClick={props.onClose}
           >
@@ -196,7 +202,7 @@ export function showModal(props: ModalProps) {
     }
   };
 
-  root.render(<Modal {...props} onClose={closeModal}></Modal>);
+  root.render(<Modal /* @uxid app/components/ui-lib::showModal.modal */ {...props} onClose={closeModal}></Modal>);
 }
 
 export type ToastProps = {
@@ -208,13 +214,14 @@ export type ToastProps = {
   onClose?: () => void;
 };
 
+// @uxid app/components/ui-lib::Toast
 export function Toast(props: ToastProps) {
   return (
     <div className={styles["toast-container"]}>
       <div className={styles["toast-content"]}>
         <span>{props.content}</span>
         {props.action && (
-          <button
+          <button /* @uxid app/components/ui-lib::Toast.button */
             onClick={() => {
               props.action?.onClick?.();
               props.onClose?.();
@@ -252,7 +259,7 @@ export function showToast(
     close();
   }, delay);
 
-  root.render(<Toast content={content} action={action} onClose={close} />);
+  root.render(<Toast /* @uxid app/components/ui-lib::showToast.toast */ content={content} action={action} onClose={close} />);
 }
 
 export type InputProps = React.HTMLProps<HTMLTextAreaElement> & {
@@ -260,15 +267,17 @@ export type InputProps = React.HTMLProps<HTMLTextAreaElement> & {
   rows?: number;
 };
 
+// @uxid app/components/ui-lib::Input
 export function Input(props: InputProps) {
   return (
-    <textarea
+    <textarea /* @uxid app/components/ui-lib::Input.textarea */
       {...props}
       className={clsx(styles["input"], props.className)}
     ></textarea>
   );
 }
 
+// @uxid app/components/ui-lib::PasswordInput
 export function PasswordInput(
   props: HTMLProps<HTMLInputElement> & { aria?: string },
 ) {
@@ -279,13 +288,13 @@ export function PasswordInput(
 
   return (
     <div className={"password-input-container"}>
-      <IconButton
+      <IconButton /* @uxid app/components/ui-lib::PasswordInput.iconbutton */
         aria={props.aria}
         icon={visible ? <EyeIcon /> : <EyeOffIcon />}
         onClick={changeVisibility}
         className={"password-eye"}
       />
-      <input
+      <input /* @uxid app/components/ui-lib::PasswordInput.input */
         {...props}
         type={visible ? "text" : "password"}
         className={"password-input"}
@@ -294,6 +303,7 @@ export function PasswordInput(
   );
 }
 
+// @uxid app/components/ui-lib::Select
 export function Select(
   props: React.DetailedHTMLProps<
     React.SelectHTMLAttributes<HTMLSelectElement> & {
@@ -313,7 +323,7 @@ export function Select(
         className,
       )}
     >
-      <select className={styles["select-with-icon-select"]} {...otherProps}>
+      <select /* @uxid app/components/ui-lib::Select.select */ className={styles["select-with-icon-select"]} {...otherProps}>
         {children}
       </select>
       <DownIcon className={styles["select-with-icon-icon"]} />
@@ -334,10 +344,10 @@ export function showConfirm(content: any) {
 
   return new Promise<boolean>((resolve) => {
     root.render(
-      <Modal
+      <Modal /* @uxid app/components/ui-lib::showConfirm.modal */
         title={Locale.UI.Confirm}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/ui-lib::showConfirm.iconbutton */
             key="cancel"
             text={Locale.UI.Cancel}
             onClick={() => {
@@ -349,7 +359,7 @@ export function showConfirm(content: any) {
             bordered
             shadow
           ></IconButton>,
-          <IconButton
+          <IconButton /* @uxid app/components/ui-lib::showConfirm.iconbutton-2 */
             key="confirm"
             text={Locale.UI.Confirm}
             type="primary"
@@ -372,6 +382,7 @@ export function showConfirm(content: any) {
   });
 }
 
+// @uxid app/components/ui-lib::PromptInput
 function PromptInput(props: {
   value: string;
   onChange: (value: string) => void;
@@ -384,7 +395,7 @@ function PromptInput(props: {
   };
 
   return (
-    <textarea
+    <textarea /* @uxid app/components/ui-lib::PromptInput.textarea */
       className={styles["modal-input"]}
       autoFocus
       value={input}
@@ -409,10 +420,10 @@ export function showPrompt(content: any, value = "", rows = 3) {
     let userInput = value;
 
     root.render(
-      <Modal
+      <Modal /* @uxid app/components/ui-lib::showPrompt.modal */
         title={content}
         actions={[
-          <IconButton
+          <IconButton /* @uxid app/components/ui-lib::showPrompt.iconbutton */
             key="cancel"
             text={Locale.UI.Cancel}
             onClick={() => {
@@ -423,7 +434,7 @@ export function showPrompt(content: any, value = "", rows = 3) {
             shadow
             tabIndex={0}
           ></IconButton>,
-          <IconButton
+          <IconButton /* @uxid app/components/ui-lib::showPrompt.iconbutton-2 */
             key="confirm"
             text={Locale.UI.Confirm}
             type="primary"
@@ -439,7 +450,7 @@ export function showPrompt(content: any, value = "", rows = 3) {
         ]}
         onClose={closeModal}
       >
-        <PromptInput
+        <PromptInput /* @uxid app/components/ui-lib::showPrompt.promptinput */
           onChange={(val) => (userInput = val)}
           value={value}
           rows={rows}
@@ -474,6 +485,7 @@ export function showImageModal(
   });
 }
 
+// @uxid app/components/ui-lib::Selector
 export function Selector<T>(props: {
   items: Array<{
     title: string;
@@ -510,13 +522,13 @@ export function Selector<T>(props: {
   };
 
   return (
-    <div className={styles["selector"]} onClick={() => props.onClose?.()}>
+    <div /* @uxid app/components/ui-lib::Selector.div */ className={styles["selector"]} onClick={() => props.onClose?.()}>
       <div className={styles["selector-content"]}>
         <List>
           {props.items.map((item, i) => {
             const selected = selectedValues.includes(item.value);
             return (
-              <ListItem
+              <ListItem /* @uxid app/components/ui-lib::Selector.listitem */
                 className={clsx(styles["selector-item"], {
                   [styles["selector-item-disabled"]]: item.disable,
                 })}
@@ -552,6 +564,7 @@ export function Selector<T>(props: {
     </div>
   );
 }
+// @uxid app/components/ui-lib::FullScreen
 export function FullScreen(props: any) {
   const { children, right = 10, top = 10, ...rest } = props;
   const ref = useRef<HTMLDivElement>();
@@ -577,7 +590,7 @@ export function FullScreen(props: any) {
   return (
     <div ref={ref} style={{ position: "relative" }} {...rest}>
       <div style={{ position: "absolute", right, top }}>
-        <IconButton
+        <IconButton /* @uxid app/components/ui-lib::FullScreen.iconbutton */
           icon={fullScreen ? <MinIcon /> : <MaxIcon />}
           onClick={toggleFullscreen}
           bordered

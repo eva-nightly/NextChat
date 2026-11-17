@@ -15,6 +15,7 @@ type Item = {
   name: string;
   content: string;
 };
+// @uxid app/components/search-chat::SearchChatPage
 export function SearchChatPage() {
   const navigate = useNavigate();
 
@@ -101,7 +102,7 @@ export function SearchChatPage() {
 
           <div className="window-actions">
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/search-chat::SearchChatPage.iconbutton */
                 icon={<CloseIcon />}
                 bordered
                 onClick={() => navigate(-1)}
@@ -113,7 +114,7 @@ export function SearchChatPage() {
         <div className={styles["mask-page-body"]}>
           <div className={styles["mask-filter"]}>
             {/**搜索输入框 */}
-            <input
+            <input /* @uxid app/components/search-chat::SearchChatPage.input */
               type="text"
               className={styles["search-bar"]}
               placeholder={Locale.SearchChat.Page.Search}
@@ -134,7 +135,7 @@ export function SearchChatPage() {
 
           <div>
             {searchResults.map((item) => (
-              <div
+              <div /* @uxid app/components/search-chat::SearchChatPage.div */
                 className={styles["mask-item"]}
                 key={item.id}
                 onClick={() => {
