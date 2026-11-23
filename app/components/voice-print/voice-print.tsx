@@ -6,6 +6,7 @@ interface VoicePrintProps {
   isActive?: boolean;
 }
 
+// @uxid app/components/voice-print/voice-print::VoicePrint
 export function VoicePrint({ frequencies, isActive }: VoicePrintProps) {
   // Canvas引用，用于获取绘图上下文
   const canvasRef = useRef<HTMLCanvasElement>(null);

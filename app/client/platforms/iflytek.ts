@@ -26,6 +26,7 @@ import { fetch } from "@/app/utils/stream";
 
 import { RequestPayload } from "./openai";
 
+// @uxid app/client/platforms/iflytek::SparkApi
 export class SparkApi implements LLMApi {
   private disableListModels = true;
 

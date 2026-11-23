@@ -18,9 +18,10 @@ import { showConfirm } from "./ui-lib";
 import { BUILTIN_MASK_STORE } from "../masks";
 import clsx from "clsx";
 
+// @uxid app/components/new-chat::MaskItem
 function MaskItem(props: { mask: Mask; onClick?: () => void }) {
   return (
-    <div className={styles["mask"]} onClick={props.onClick}>
+    <div /* @uxid app/components/new-chat::MaskItem.div */ className={styles["mask"]} onClick={props.onClick}>
       <MaskAvatar
         avatar={props.mask.avatar}
         model={props.mask.modelConfig.model}
@@ -74,6 +75,7 @@ function useMaskGroup(masks: Mask[]) {
   return groups;
 }
 
+// @uxid app/components/new-chat::NewChat
 export function NewChat() {
   const chatStore = useChatStore();
   const maskStore = useMaskStore();
@@ -116,13 +118,13 @@ export function NewChat() {
   return (
     <div className={styles["new-chat"]}>
       <div className={styles["mask-header"]}>
-        <IconButton
+        <IconButton /* @uxid app/components/new-chat::NewChat.iconbutton */
           icon={<LeftIcon />}
           text={Locale.NewChat.Return}
           onClick={() => navigate(Path.Home)}
         ></IconButton>
         {!state?.fromHome && (
-          <IconButton
+          <IconButton /* @uxid app/components/new-chat::NewChat.iconbutton-2 */
             text={Locale.NewChat.NotShow}
             onClick={async () => {
               if (await showConfirm(Locale.NewChat.ConfirmNoShow)) {
@@ -151,7 +153,7 @@ export function NewChat() {
       <div className={styles["sub-title"]}>{Locale.NewChat.SubTitle}</div>
 
       <div className={styles["actions"]}>
-        <IconButton
+        <IconButton /* @uxid app/components/new-chat::NewChat.iconbutton-3 */
           text={Locale.NewChat.More}
           onClick={() => navigate(Path.Masks)}
           icon={<EyeIcon />}
@@ -159,7 +161,7 @@ export function NewChat() {
           shadow
         />
 
-        <IconButton
+        <IconButton /* @uxid app/components/new-chat::NewChat.iconbutton-4 */
           text={Locale.NewChat.Skip}
           onClick={() => startChat()}
           icon={<LightningIcon />}
@@ -173,7 +175,7 @@ export function NewChat() {
         {groups.map((masks, i) => (
           <div key={i} className={styles["mask-row"]}>
             {masks.map((mask, index) => (
-              <MaskItem
+              <MaskItem /* @uxid app/components/new-chat::NewChat.maskitem */
                 key={index}
                 mask={mask}
                 onClick={() => startChat(mask)}

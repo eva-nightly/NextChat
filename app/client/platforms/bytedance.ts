@@ -49,6 +49,7 @@ interface RequestPayloadForByteDance {
   max_tokens?: number;
 }
 
+// @uxid app/client/platforms/bytedance::DoubaoApi
 export class DoubaoApi implements LLMApi {
   path(path: string): string {
     const accessStore = useAccessStore.getState();

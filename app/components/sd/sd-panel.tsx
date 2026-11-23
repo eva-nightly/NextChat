@@ -129,6 +129,7 @@ export const models = [
   },
 ];
 
+// @uxid app/components/sd/sd-panel::ControlParamItem
 export function ControlParamItem(props: {
   title: string;
   subTitle?: string;
@@ -156,6 +157,7 @@ export function ControlParamItem(props: {
   );
 }
 
+// @uxid app/components/sd/sd-panel::ControlParam
 export function ControlParam(props: {
   columns: any[];
   data: any;
@@ -173,7 +175,7 @@ export function ControlParam(props: {
                 subTitle={item.sub}
                 required={item.required}
               >
-                <textarea
+                <textarea /* @uxid app/components/sd/sd-panel::ControlParam.textarea */
                   rows={item.rows || 3}
                   style={{ maxWidth: "100%", width: "100%", padding: "10px" }}
                   placeholder={item.placeholder}
@@ -192,7 +194,7 @@ export function ControlParam(props: {
                 subTitle={item.sub}
                 required={item.required}
               >
-                <Select
+                <Select /* @uxid app/components/sd/sd-panel::ControlParam.select */
                   aria-label={item.name}
                   value={props.data[item.value]}
                   onChange={(e) => {
@@ -201,7 +203,7 @@ export function ControlParam(props: {
                 >
                   {item.options.map((opt: any) => {
                     return (
-                      <option value={opt.value} key={opt.value}>
+                      <option /* @uxid app/components/sd/sd-panel::ControlParam.option */ value={opt.value} key={opt.value}>
                         {opt.name}
                       </option>
                     );
@@ -217,7 +219,7 @@ export function ControlParam(props: {
                 subTitle={item.sub}
                 required={item.required}
               >
-                <input
+                <input /* @uxid app/components/sd/sd-panel::ControlParam.number */
                   aria-label={item.name}
                   type="number"
                   min={item.min}
@@ -237,7 +239,7 @@ export function ControlParam(props: {
                 subTitle={item.sub}
                 required={item.required}
               >
-                <input
+                <input /* @uxid app/components/sd/sd-panel::ControlParam.input */
                   aria-label={item.name}
                   type="text"
                   value={props.data[item.value]}
@@ -276,6 +278,7 @@ export const getParams = (model: any, params: any) => {
   return models.find((m) => m.value === model.value)?.params(params) || [];
 };
 
+// @uxid app/components/sd/sd-panel::SdPanel
 export function SdPanel() {
   const sdStore = useSdStore();
   const currentModel = sdStore.currentModel;
@@ -300,7 +303,7 @@ export function SdPanel() {
         <div className={styles["ai-models"]}>
           {models.map((item) => {
             return (
-              <IconButton
+              <IconButton /* @uxid app/components/sd/sd-panel::SdPanel.iconbutton */
                 text={item.name}
                 key={item.value}
                 type={currentModel.value == item.value ? "primary" : null}
@@ -311,7 +314,7 @@ export function SdPanel() {
           })}
         </div>
       </ControlParamItem>
-      <ControlParam
+      <ControlParam /* @uxid app/components/sd/sd-panel::SdPanel.controlparam */
         columns={getParams?.(currentModel, params) as any[]}
         data={params}
         onChange={handleValueChange}

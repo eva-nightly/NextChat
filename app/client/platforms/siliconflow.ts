@@ -40,6 +40,7 @@ export interface SiliconFlowListModelResponse {
   }>;
 }
 
+// @uxid app/client/platforms/siliconflow::SiliconflowApi
 export class SiliconflowApi implements LLMApi {
   private disableListModels = false;
 

@@ -136,6 +136,7 @@ export function useDragSideBar() {
   };
 }
 
+// @uxid app/components/sidebar::SideBarContainer
 export function SideBarContainer(props: {
   children: React.ReactNode;
   onDragStart: (e: MouseEvent) => void;
@@ -159,7 +160,7 @@ export function SideBarContainer(props: {
       }}
     >
       {children}
-      <div
+      <div /* @uxid app/components/sidebar::SideBarContainer.div */
         className={styles["sidebar-drag"]}
         onPointerDown={(e) => onDragStart(e as any)}
       >
@@ -169,6 +170,7 @@ export function SideBarContainer(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBarHeader
 export function SideBarHeader(props: {
   title?: string | React.ReactNode;
   subTitle?: string | React.ReactNode;
@@ -198,18 +200,20 @@ export function SideBarHeader(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBarBody
 export function SideBarBody(props: {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }) {
   const { onClick, children } = props;
   return (
-    <div className={styles["sidebar-body"]} onClick={onClick}>
+    <div /* @uxid app/components/sidebar::SideBarBody.div */ className={styles["sidebar-body"]} onClick={onClick}>
       {children}
     </div>
   );
 }
 
+// @uxid app/components/sidebar::SideBarTail
 export function SideBarTail(props: {
   primaryAction?: React.ReactNode;
   secondaryAction?: React.ReactNode;
@@ -224,6 +228,7 @@ export function SideBarTail(props: {
   );
 }
 
+// @uxid app/components/sidebar::SideBar
 export function SideBar(props: { className?: string }) {
   useHotKey();
   const { onDragStart, shouldNarrow } = useDragSideBar();
@@ -244,7 +249,7 @@ export function SideBar(props: { className?: string }) {
   }, []);
 
   return (
-    <SideBarContainer
+    <SideBarContainer /* @uxid app/components/sidebar::SideBar-2.sidebarcontainer */
       onDragStart={onDragStart}
       shouldNarrow={shouldNarrow}
       {...props}
@@ -256,7 +261,7 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow={shouldNarrow}
       >
         <div className={styles["sidebar-header-bar"]}>
-          <IconButton
+          <IconButton /* @uxid app/components/sidebar::SideBar-2.iconbutton */
             icon={<MaskIcon />}
             text={shouldNarrow ? undefined : Locale.Mask.Name}
             className={styles["sidebar-bar-button"]}
@@ -270,7 +275,7 @@ export function SideBar(props: { className?: string }) {
             shadow
           />
           {mcpEnabled && (
-            <IconButton
+            <IconButton /* @uxid app/components/sidebar::SideBar-2.iconbutton-2 */
               icon={<McpIcon />}
               text={shouldNarrow ? undefined : Locale.Mcp.Name}
               className={styles["sidebar-bar-button"]}
@@ -280,7 +285,7 @@ export function SideBar(props: { className?: string }) {
               shadow
             />
           )}
-          <IconButton
+          <IconButton /* @uxid app/components/sidebar::SideBar-2.iconbutton-3 */
             icon={<DiscoveryIcon />}
             text={shouldNarrow ? undefined : Locale.Discovery.Name}
             className={styles["sidebar-bar-button"]}
@@ -289,7 +294,7 @@ export function SideBar(props: { className?: string }) {
           />
         </div>
         {showDiscoverySelector && (
-          <Selector
+          <Selector /* @uxid app/components/sidebar::SideBar-2.selector */
             items={[
               ...DISCOVERY.map((item) => {
                 return {
@@ -305,7 +310,7 @@ export function SideBar(props: { className?: string }) {
           />
         )}
       </SideBarHeader>
-      <SideBarBody
+      <SideBarBody /* @uxid app/components/sidebar::SideBar-2.sidebarbody */
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             navigate(Path.Home);
@@ -318,7 +323,7 @@ export function SideBar(props: { className?: string }) {
         primaryAction={
           <>
             <div className={clsx(styles["sidebar-action"], styles.mobile)}>
-              <IconButton
+              <IconButton /* @uxid app/components/sidebar::SideBar-2.iconbutton-4 */
                 icon={<DeleteIcon />}
                 onClick={async () => {
                   if (await showConfirm(Locale.Home.DeleteChat)) {
@@ -337,7 +342,7 @@ export function SideBar(props: { className?: string }) {
               </Link>
             </div>
             <div className={styles["sidebar-action"]}>
-              <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
+              <a /* @uxid app/components/sidebar::SideBar-2.link */ href={REPO_URL} target="_blank" rel="noopener noreferrer">
                 <IconButton
                   aria={Locale.Export.MessageFromChatGPT}
                   icon={<GithubIcon />}
@@ -348,7 +353,7 @@ export function SideBar(props: { className?: string }) {
           </>
         }
         secondaryAction={
-          <IconButton
+          <IconButton /* @uxid app/components/sidebar::SideBar-2.iconbutton-5 */
             icon={<AddIcon />}
             text={shouldNarrow ? undefined : Locale.Home.NewChat}
             onClick={() => {
