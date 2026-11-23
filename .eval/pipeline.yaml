@@ -1,0 +1,14 @@
+stack: next-typescript
+packageManager: yarn
+commit: 22cefe6cea1f3b38b926e591c6d394817bf36bb3
+verifiedAt: 2026-11-23T02:43:09.215Z
+commands:
+  install: yarn install --frozen-lockfile
+  build: yarn build
+  analyze: yarn lint
+  test: yarn test
+status:
+  install: none
+  build: none
+  analyze: none
+  test: none

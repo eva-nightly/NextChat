@@ -40,6 +40,7 @@ export interface Ai302ListModelResponse {
   }>;
 }
 
+// @uxid app/client/platforms/ai302::Ai302Api
 export class Ai302Api implements LLMApi {
   private disableListModels = false;
 

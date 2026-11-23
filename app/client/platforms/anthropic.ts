@@ -73,6 +73,7 @@ const ClaudeMapper = {
 
 const keys = ["claude-2, claude-instant-1"];
 
+// @uxid app/client/platforms/anthropic::ClaudeApi
 export class ClaudeApi implements LLMApi {
   speech(options: SpeechOptions): Promise<ArrayBuffer> {
     throw new Error("Method not implemented.");

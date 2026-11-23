@@ -79,6 +79,7 @@ export interface DalleRequestPayload {
   style: DalleStyle;
 }
 
+// @uxid app/client/platforms/openai::ChatGPTApi
 export class ChatGPTApi implements LLMApi {
   private disableListModels = true;
 

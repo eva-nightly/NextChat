@@ -31,6 +31,7 @@ import { useAccessStore } from "../store";
 import clsx from "clsx";
 import { initializeMcpSystem, isMcpEnabled } from "../mcp/actions";
 
+// @uxid app/components/home::Loading
 export function Loading(props: { noLogo?: boolean }) {
   return (
     <div className={clsx("no-dark", styles["loading-content"])}>
@@ -149,6 +150,7 @@ const loadAsyncGoogleFont = () => {
   document.head.appendChild(linkEl);
 };
 
+// @uxid app/components/home::WindowContent
 export function WindowContent(props: { children: React.ReactNode }) {
   return (
     <div className={styles["window-content"]} id={SlotID.AppBody}>
@@ -157,6 +159,7 @@ export function WindowContent(props: { children: React.ReactNode }) {
   );
 }
 
+// @uxid app/components/home::Screen
 function Screen() {
   const config = useAppConfig();
   const location = useLocation();
@@ -234,6 +237,7 @@ export function useLoadData() {
   }, []);
 }
 
+// @uxid app/components/home::Home
 export function Home() {
   useSwitchTheme();
   useLoadData();

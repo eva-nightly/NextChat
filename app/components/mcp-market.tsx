@@ -41,6 +41,7 @@ interface ConfigProperty {
   minItems?: number;
 }
 
+// @uxid app/components/mcp-market::McpMarketPage
 export function McpMarketPage() {
   const navigate = useNavigate();
   const accessCode = useAccessStore((state) => state.accessCode);
@@ -360,7 +361,7 @@ export function McpMarketPage() {
                 {(currentValue as string[]).map(
                   (value: string, index: number) => (
                     <div key={index} className={styles["path-item"]}>
-                      <input
+                      <input /* @uxid app/components/mcp-market::McpMarketPage.input */
                         type="text"
                         value={value}
                         placeholder={`${itemLabel} ${index + 1}`}
@@ -370,7 +371,7 @@ export function McpMarketPage() {
                           setUserConfig({ ...userConfig, [key]: newValue });
                         }}
                       />
-                      <IconButton
+                      <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton */
                         icon={<DeleteIcon />}
                         className={styles["delete-button"]}
                         onClick={() => {
@@ -382,7 +383,7 @@ export function McpMarketPage() {
                     </div>
                   ),
                 )}
-                <IconButton
+                <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-2 */
                   icon={<AddIcon />}
                   text={addButtonText}
                   className={styles["add-button"]}
@@ -399,7 +400,7 @@ export function McpMarketPage() {
           const currentValue = userConfig[key as keyof typeof userConfig] || "";
           return (
             <ListItem key={key} title={key} subTitle={prop.description}>
-              <input
+              <input /* @uxid app/components/mcp-market::McpMarketPage.input-2 */
                 aria-label={key}
                 type="text"
                 value={currentValue}
@@ -554,7 +555,7 @@ export function McpMarketPage() {
                 )}
                 {!loadingStates[server.id] && getServerStatusDisplay(server.id)}
                 {server.repo && (
-                  <a
+                  <a /* @uxid app/components/mcp-market::McpMarketPage.link */
                     href={server.repo}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -583,7 +584,7 @@ export function McpMarketPage() {
               {isServerAdded(server.id) ? (
                 <>
                   {server.configurable && (
-                    <IconButton
+                    <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-3 */
                       icon={<EditIcon />}
                       text="Configure"
                       onClick={() => setEditingServerId(server.id)}
@@ -592,7 +593,7 @@ export function McpMarketPage() {
                   )}
                   {checkServerStatus(server.id).status === "paused" ? (
                     <>
-                      <IconButton
+                      <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-4 */
                         icon={<PlayIcon />}
                         text="Start"
                         onClick={() => restartServer(server.id)}
@@ -607,7 +608,7 @@ export function McpMarketPage() {
                     </>
                   ) : (
                     <>
-                      <IconButton
+                      <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-5 */
                         icon={<EyeIcon />}
                         text="Tools"
                         onClick={async () => {
@@ -619,7 +620,7 @@ export function McpMarketPage() {
                           checkServerStatus(server.id).status === "error"
                         }
                       />
-                      <IconButton
+                      <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-6 */
                         icon={<StopIcon />}
                         text="Stop"
                         onClick={() => pauseServer(server.id)}
@@ -629,7 +630,7 @@ export function McpMarketPage() {
                   )}
                 </>
               ) : (
-                <IconButton
+                <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-7 */
                   icon={<AddIcon />}
                   text="Add"
                   onClick={() => addServer(server)}
@@ -662,7 +663,7 @@ export function McpMarketPage() {
 
           <div className="window-actions">
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-8 */
                 icon={<RestartIcon />}
                 bordered
                 onClick={handleRestartAll}
@@ -671,7 +672,7 @@ export function McpMarketPage() {
               />
             </div>
             <div className="window-action-button">
-              <IconButton
+              <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-9 */
                 icon={<CloseIcon />}
                 bordered
                 onClick={() => navigate(-1)}
@@ -683,7 +684,7 @@ export function McpMarketPage() {
 
         <div className={styles["mcp-market-page-body"]}>
           <div className={styles["mcp-market-filter"]}>
-            <input
+            <input /* @uxid app/components/mcp-market::McpMarketPage.input-3 */
               type="text"
               className={styles["search-bar"]}
               placeholder={"Search MCP Server"}
@@ -698,18 +699,18 @@ export function McpMarketPage() {
         {/*编辑服务器配置*/}
         {editingServerId && (
           <div className="modal-mask">
-            <Modal
+            <Modal /* @uxid app/components/mcp-market::McpMarketPage.modal */
               title={`Configure Server - ${editingServerId}`}
               onClose={() => !isLoading && setEditingServerId(undefined)}
               actions={[
-                <IconButton
+                <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-10 */
                   key="cancel"
                   text="Cancel"
                   onClick={() => setEditingServerId(undefined)}
                   bordered
                   disabled={isLoading}
                 />,
-                <IconButton
+                <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-11 */
                   key="confirm"
                   text="Save"
                   type="primary"
@@ -726,11 +727,11 @@ export function McpMarketPage() {
 
         {viewingServerId && (
           <div className="modal-mask">
-            <Modal
+            <Modal /* @uxid app/components/mcp-market::McpMarketPage.modal-2 */
               title={`Server Details - ${viewingServerId}`}
               onClose={() => setViewingServerId(undefined)}
               actions={[
-                <IconButton
+                <IconButton /* @uxid app/components/mcp-market::McpMarketPage.iconbutton-12 */
                   key="close"
                   text="Close"
                   onClick={() => setViewingServerId(undefined)}
